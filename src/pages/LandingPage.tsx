@@ -336,6 +336,73 @@ function Process() {
   );
 }
 
+/* ─── PROJETOS ─── */
+function Projects() {
+  const { ref, visible } = useScrollReveal();
+  const projects = [
+    {
+      src: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80",
+      title: "Escritório Jurídico",
+      subtitle: "São Paulo, SP",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80",
+      title: "Clínica Premium",
+      subtitle: "Curitiba, PR",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1604328698692-f76ea9498e76?auto=format&fit=crop&w=800&q=80",
+      title: "Consultoria Financeira",
+      subtitle: "Rio de Janeiro, RJ",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1572025442646-866d16c84a54?auto=format&fit=crop&w=800&q=80",
+      title: "Sede Corporativa",
+      subtitle: "Belo Horizonte, MG",
+    },
+  ];
+  return (
+    <section ref={ref} className="py-24 sm:py-32 px-6 bg-secondary">
+      <div className="max-w-6xl mx-auto">
+        <div
+          className={`transition-all duration-[800ms] ease-out text-center mb-16 ${
+            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+        >
+          <p className="font-body text-xs tracking-[0.3em] uppercase text-muted-foreground mb-4">
+            Portfólio
+          </p>
+          <h2 className="font-display tracking-display text-3xl sm:text-4xl text-foreground leading-tight">
+            Projetos que comunicam valor
+          </h2>
+        </div>
+        <div className="grid sm:grid-cols-2 gap-6">
+          <StaggerChildren visible={visible} baseDelay={200} increment={150}>
+            {projects.map((p) => (
+              <div key={p.title} className="group">
+                <div className="img-hover-wrap rounded-xl">
+                  <img
+                    src={p.src}
+                    alt={p.title}
+                    className="w-full h-[300px] sm:h-[340px] object-cover rounded-xl"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="mt-4 mb-2">
+                  <h3 className="font-display tracking-display text-lg text-foreground">
+                    {p.title}
+                  </h3>
+                  <p className="font-body text-sm text-muted-foreground">{p.subtitle}</p>
+                </div>
+              </div>
+            ))}
+          </StaggerChildren>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ─── CTA FINAL ─── */
 function FinalCTA() {
   return (
@@ -398,6 +465,7 @@ export default function LandingPage() {
       <PromiseSection />
       <ForWhom />
       <Process />
+      <Projects />
       <FinalCTA />
       <Footer />
       <FloatingWhatsApp />
