@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { MessageCircle, ArrowRight, Target, Lightbulb, Ruler } from "lucide-react";
+import logoEter from "@/assets/logo-eter.jpeg";
 
 const WHATSAPP_URL =
   "https://wa.me/55XXXXXXXXXXX?text=Quero%20uma%20an%C3%A1lise%20do%20meu%20escrit%C3%B3rio";
