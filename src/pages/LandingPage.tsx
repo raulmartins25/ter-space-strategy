@@ -133,9 +133,6 @@ function ProblemBlock() {
             visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <p className="font-body text-[11px] tracking-[0.4em] uppercase text-muted-foreground mb-5 text-center">
-            O problema
-          </p>
           <h2 className="font-display tracking-display text-3xl sm:text-4xl md:text-5xl text-center text-foreground mb-20 max-w-3xl mx-auto leading-[1.1]">
             Seu espaço pode estar custando clientes — e você nem percebe.
           </h2>
