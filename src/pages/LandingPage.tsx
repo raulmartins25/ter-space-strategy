@@ -412,7 +412,7 @@ function Projects() {
 /* ─── CTA FINAL (com foto das sócias atrás) ─── */
 function FinalCTA() {
   return (
-    <RevealSection className="relative overflow-hidden pt-0 pb-32 sm:pb-40 px-8 sm:px-12" bg="bg-[hsl(var(--eter-marrom-claro))]">
+    <RevealSection className="relative overflow-hidden pt-0 pb-32 sm:pb-40 px-8 sm:px-12" bg="bg-[#f0e5db]">
       {/* Foto das sócias — atrás do texto */}
       <div className="flex justify-center mb-0 relative z-0">
         <div className="max-w-[320px] sm:max-w-[360px] w-full">
@@ -431,11 +431,11 @@ function FinalCTA() {
       </div>
       {/* Texto sobreposto — na frente */}
       <div className="max-w-3xl mx-auto text-center relative z-10 -mt-24 sm:-mt-32">
-        <div className="deco-line mx-auto mb-10 bg-accent/40" />
-        <h2 className="font-display tracking-display text-3xl sm:text-4xl md:text-5xl text-secondary mb-8 leading-[1.1]">
+        <div className="deco-line mx-auto mb-10 bg-[#5c4336]/30" />
+        <h2 className="font-display tracking-display text-3xl sm:text-4xl md:text-5xl text-[#5c4336] mb-8 leading-[1.1]">
           Se o seu escritório não impressiona, ele negocia seu preço por você.
         </h2>
-        <p className="font-body font-light text-[hsl(var(--eter-bege))] text-base sm:text-lg mb-14 leading-[1.8]">
+        <p className="font-body font-light text-[#5c4336] text-base sm:text-lg mb-14 leading-[1.8]">
           Solicite sua Análise de Performance Espacial e descubra o que seu
           ambiente está comunicando.
         </p>
@@ -443,7 +443,7 @@ function FinalCTA() {
           href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-3 bg-accent text-foreground font-body font-medium text-sm px-10 py-4 rounded-full hover:bg-secondary transition-all duration-500 hover:-translate-y-0.5 hover:shadow-2xl"
+          className="inline-flex items-center gap-3 bg-[#5c4939] text-[#e5eaed] font-body font-medium text-sm px-10 py-4 rounded-full hover:opacity-90 transition-all duration-500 hover:-translate-y-0.5 hover:shadow-2xl"
         >
           <MessageCircle className="w-5 h-5" />
           Quero minha análise no WhatsApp
