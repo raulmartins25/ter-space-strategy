@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react"; // refresh
 import { MessageCircle, ArrowRight, Target, Lightbulb, Ruler } from "lucide-react";
 import { PortfolioCarousel } from "@/components/ui/portfolio-carousel";
 import { HeroSection } from "@/components/ui/hero-section-2";
