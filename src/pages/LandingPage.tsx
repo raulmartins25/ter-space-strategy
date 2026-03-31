@@ -17,6 +17,7 @@ import loja1 from "@/assets/loja-1.jpg";
 import loja2 from "@/assets/loja-2.jpg";
 import loja3 from "@/assets/loja-3.jpg";
 import loja4 from "@/assets/loja-4.jpg";
+import sociasImg from "@/assets/socias.png";
 
 const WHATSAPP_URL =
   "https://wa.me/556299542888?text=Quero%20uma%20an%C3%A1lise%20do%20meu%20escrit%C3%B3rio";
