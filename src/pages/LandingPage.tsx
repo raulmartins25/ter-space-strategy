@@ -388,7 +388,7 @@ function Projects() {
           }`}
           style={{ transitionDelay: visible ? "300ms" : "0ms" }}
         >
-          <PortfolioCarousel items={portfolioItems} autoplay />
+          <PortfolioCarousel items={portfolioItems} autoplay={false} />
         </div>
       </div>
     </section>
