@@ -111,7 +111,7 @@ const StackedCardsInteraction = ({
       <AnimatePresence>
         {lightboxImg && (
           <motion.div
-            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90 backdrop-blur-sm cursor-pointer"
+            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-md cursor-pointer p-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -126,11 +126,12 @@ const StackedCardsInteraction = ({
             <motion.img
               src={lightboxImg}
               alt=""
-              className="max-w-[90vw] max-h-[90vh] object-contain rounded-lg"
-              initial={{ scale: 0.9, opacity: 0 }}
+              className="max-w-[85vw] max-h-[85vh] object-contain rounded-2xl shadow-[0_0_80px_rgba(0,0,0,0.6)]"
+              initial={{ scale: 0.85, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ duration: 0.3 }}
+              exit={{ scale: 0.85, opacity: 0 }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              onClick={(e) => e.stopPropagation()}
             />
           </motion.div>
         )}
