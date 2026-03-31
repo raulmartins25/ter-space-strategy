@@ -589,7 +589,7 @@ function Footer() {
           <div>
             <p className="font-display text-sm text-foreground mb-4">Conecte-se</p>
             <div className="flex flex-col gap-3">
-              <a href="https://instagram.com/eter.arq" target="_blank" rel="noopener noreferrer" className="font-body text-[13px] text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2">
+              <a href="https://www.instagram.com/eter.arqdesign" target="_blank" rel="noopener noreferrer" className="font-body text-[13px] text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2">
                 <Instagram className="w-4 h-4" /> Instagram
               </a>
               <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="font-body text-[13px] text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2">
