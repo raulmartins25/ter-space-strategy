@@ -399,7 +399,7 @@ function Projects() {
   const { ref, visible } = useScrollReveal();
   const projectSets = [
     {
-      label: "Corporativo",
+      label: "Clínicas",
       cards: [
         {
           image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
