@@ -412,16 +412,18 @@ function Projects() {
 /* ─── SÓCIAS ─── */
 function PartnersPhoto() {
   return (
-    <section className="bg-foreground relative overflow-hidden pt-16 sm:pt-24 pb-0">
+    <section className="bg-foreground relative overflow-hidden pt-8 sm:pt-16 -mb-32 sm:-mb-40 z-10">
       <div className="flex justify-center">
-        <div className="relative max-w-[420px] w-full">
+        <div className="relative max-w-[320px] sm:max-w-[360px] w-full">
           <img
             src={sociasImg}
             alt="Sócias — Éter Arquitetura e Design"
             className="w-full h-auto relative z-10"
             style={{
-              maskImage: "linear-gradient(to bottom, black 40%, transparent 100%)",
-              WebkitMaskImage: "linear-gradient(to bottom, black 40%, transparent 100%)",
+              maskImage: "linear-gradient(to bottom, black 30%, transparent 95%), linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)",
+              WebkitMaskImage: "linear-gradient(to bottom, black 30%, transparent 95%), linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)",
+              maskComposite: "intersect",
+              WebkitMaskComposite: "destination-in",
             }}
           />
         </div>
@@ -433,7 +435,7 @@ function PartnersPhoto() {
 /* ─── CTA FINAL ─── */
 function FinalCTA() {
   return (
-    <RevealSection className="pt-8 sm:pt-12 pb-32 sm:pb-40 px-8 sm:px-12" bg="bg-foreground">
+    <RevealSection className="pt-36 sm:pt-44 pb-32 sm:pb-40 px-8 sm:px-12" bg="bg-foreground">
       <div className="max-w-3xl mx-auto text-center">
         <div className="deco-line mx-auto mb-10 bg-accent/40" />
         <h2 className="font-display tracking-display text-3xl sm:text-4xl md:text-5xl text-secondary mb-8 leading-[1.1]">
