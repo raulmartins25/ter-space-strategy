@@ -265,95 +265,6 @@ function PromiseSection() {
   );
 }
 
-/* ─── PARA QUEM É ─── */
-function ForWhom() {
-  const { ref, visible } = useScrollReveal();
-  const [hovered, setHovered] = useState<number | null>(null);
-  const items = [
-    { text: "Atende clientes presencialmente no seu espaço", img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" },
-    { text: "Quer cobrar mais sem precisar justificar", img: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80" },
-    { text: "Deseja transmitir profissionalismo e sofisticação", img: "https://images.unsplash.com/photo-1604328698692-f76ea9498e76?auto=format&fit=crop&w=800&q=80" },
-    { text: "Sabe que a primeira impressão define o negócio", img: "https://images.unsplash.com/photo-1572025442646-866d16c84a54?auto=format&fit=crop&w=800&q=80" },
-  ];
-  return (
-    <section ref={ref} className="py-28 sm:py-36 px-8 sm:px-12 bg-secondary">
-      <div className="max-w-6xl mx-auto">
-        <div
-          className={`transition-all duration-[900ms] ease-out mb-16 ${
-            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
-        >
-          <p className="font-body text-[11px] tracking-[0.4em] uppercase text-muted-foreground mb-5">
-            Para quem é
-          </p>
-          <h2 className="font-display tracking-display text-3xl sm:text-4xl text-foreground leading-[1.1]">
-            Isso é para você se…
-          </h2>
-        </div>
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Left — list */}
-          <div className="flex flex-col gap-0">
-            {items.map((item, i) => (
-              <div
-                key={item.text}
-                className={`transition-all duration-[700ms] ease-out ${
-                  visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                }`}
-                style={{ transitionDelay: visible ? `${300 + i * 150}ms` : "0ms" }}
-                onMouseEnter={() => setHovered(i)}
-                onMouseLeave={() => setHovered(null)}
-              >
-                <div
-                  className={`flex items-center gap-6 border-l-2 pl-8 py-6 transition-all duration-300 cursor-default ${
-                    hovered === i
-                      ? "border-foreground pl-10"
-                      : "border-accent"
-                  }`}
-                >
-                  <span
-                    className={`font-display text-4xl font-light leading-none transition-colors duration-300 ${
-                      hovered === i ? "text-accent" : "text-accent/30"
-                    }`}
-                  >
-                    0{i + 1}
-                  </span>
-                  <span className="font-body text-[15px] text-foreground leading-[1.7]">
-                    {item.text}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-          {/* Right — image */}
-          <div className="hidden md:block relative h-[480px] rounded-2xl overflow-hidden">
-            {items.map((item, i) => (
-              <img
-                key={i}
-                src={item.img}
-                alt=""
-                loading="lazy"
-                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
-                  hovered === i ? "opacity-100" : "opacity-0"
-                }`}
-              />
-            ))}
-            {/* Default state — show first image faded */}
-            <img
-              src={items[0].img}
-              alt=""
-              loading="lazy"
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
-                hovered === null ? "opacity-40" : "opacity-0"
-              }`}
-            />
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ─── PROCESSO — Timeline ─── */
 function Process() {
   const { ref, visible } = useScrollReveal();
   const steps = [
@@ -586,7 +497,7 @@ export default function LandingPage() {
         src="https://images.unsplash.com/photo-1572025442646-866d16c84a54?auto=format&fit=crop&w=1920&q=80"
         alt="Espaço corporativo moderno"
       />
-      <ForWhom />
+      
       <Process />
       <Projects />
       <FinalCTA />
