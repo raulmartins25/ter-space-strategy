@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from "react"; // refresh
+import { useEffect, useRef, useState } from "react";
+import { ImageComparison, ImageComparisonImage, ImageComparisonSlider } from "@/components/ui/image-comparison";
 import { MessageCircle, ArrowRight, Target, Lightbulb, Ruler } from "lucide-react";
 import { PortfolioCarousel } from "@/components/ui/portfolio-carousel";
 import { HeroSection } from "@/components/ui/hero-section-2";
