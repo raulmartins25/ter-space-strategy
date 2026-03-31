@@ -148,7 +148,6 @@ function ProblemBlock() {
               <ImageComparisonImage
                 src={antesImg}
                 alt="Antes — espaço genérico"
-                alt="Antes — espaço genérico"
                 position="right"
               />
               <ImageComparisonImage
