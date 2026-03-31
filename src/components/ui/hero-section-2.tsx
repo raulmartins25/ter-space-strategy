@@ -80,6 +80,11 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
         className={cn("relative min-h-[auto] lg:min-h-screen flex flex-col lg:flex-row overflow-hidden bg-background", className)}
         {...props}
       >
+        {/* Mobile background image */}
+        <div className="absolute inset-0 lg:hidden">
+          <img src={backgroundImage} alt="" className="absolute inset-0 w-full h-full object-cover opacity-15" />
+        </div>
+
         {/* Left Side: Content */}
         <motion.div
           className="relative z-10 flex flex-col justify-between w-full lg:w-[55%] px-8 sm:px-12 lg:px-16 py-12 lg:py-16"
