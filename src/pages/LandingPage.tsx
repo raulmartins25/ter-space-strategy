@@ -159,10 +159,6 @@ function ProblemBlock() {
                 <div className="absolute top-1/2 left-1/2 w-5 h-5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white shadow-lg" />
               </ImageComparisonSlider>
             </ImageComparison>
-            <div className="flex justify-between mt-6">
-              <p className="font-body text-[11px] tracking-[0.3em] uppercase text-muted-foreground">Antes</p>
-              <p className="font-body text-[11px] tracking-[0.3em] uppercase text-muted-foreground">Depois</p>
-            </div>
           </div>
         </div>
       </div>
