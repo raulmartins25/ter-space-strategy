@@ -290,7 +290,6 @@ function ForWhom() {
               }`}
               style={{
                 transitionDelay: visible ? `${300 + i * 150}ms` : "0ms",
-                marginLeft: `${i * 6}%`,
               }}
             >
               <div className="flex items-center gap-6 border-l-2 border-accent pl-8 py-5 hover:border-foreground hover:pl-10 transition-all duration-400">
