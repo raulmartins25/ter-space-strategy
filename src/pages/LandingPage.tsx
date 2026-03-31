@@ -501,6 +501,7 @@ export default function LandingPage() {
       
       <Process />
       <Projects />
+      <PartnersPhoto />
       <FinalCTA />
       <Footer />
       <FloatingWhatsApp />
