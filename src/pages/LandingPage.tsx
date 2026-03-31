@@ -434,28 +434,12 @@ function FinalCTA() {
 
 /* ─── FOOTER ─── */
 function Footer() {
-  const sections = [
-    { label: "O problema", href: "#problema" },
-    { label: "Processo", href: "#processo" },
-    { label: "Portfólio", href: "#portfolio" },
-  ];
   return (
     <footer className="py-16 px-8 sm:px-12 border-t border-border">
-      <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center md:items-start justify-between gap-10">
+      <div className="max-w-5xl mx-auto flex flex-col items-center gap-10">
         <div>
           <img src={logoEter} alt="Éter Arquitetura e Design" className="h-14 w-auto opacity-80" />
         </div>
-        <nav className="flex gap-8">
-          {sections.map((s) => (
-            <a
-              key={s.label}
-              href={s.href}
-              className="link-underline font-body font-light text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"
-            >
-              {s.label}
-            </a>
-          ))}
-        </nav>
       </div>
       <div className="max-w-5xl mx-auto mt-12 pt-8 border-t border-border">
         <p className="font-body font-light text-xs text-muted-foreground text-center tracking-wide">
