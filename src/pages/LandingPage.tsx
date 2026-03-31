@@ -126,10 +126,10 @@ function Hero() {
 function ProblemBlock() {
   const { ref, visible } = useScrollReveal();
   const pains = [
-    { num: "01", title: "Falta de autoridade" },
-    { num: "02", title: "Ambiente genérico" },
-    { num: "03", title: "Não transmite valor" },
-    { num: "04", title: "Não converte clientes" },
+    { num: "01", title: "Falta de autoridade", desc: "O cliente não sente confiança ao entrar. O espaço não reflete sua competência." },
+    { num: "02", title: "Ambiente genérico", desc: "Sem identidade, sem diferencial. Igual a qualquer outro escritório da região." },
+    { num: "03", title: "Não transmite valor", desc: "O ambiente desvaloriza seu serviço e o cliente já entra negociando preço." },
+    { num: "04", title: "Não converte clientes", desc: "Você perde negócios sem entender por quê. O espaço sabota a decisão." },
   ];
 
   return (
@@ -149,15 +149,20 @@ function ProblemBlock() {
             {pains.map((p) => (
               <div
                 key={p.num}
-                className="group flex items-center gap-6 py-6 border-b border-border/60 last:border-b-0"
+                className="group py-6 border-b border-border/60 last:border-b-0"
               >
-                <span className="font-body text-[11px] tracking-[0.3em] text-muted-foreground/50 shrink-0">
-                  {p.num}
-                </span>
-                <span className="w-1.5 h-1.5 rounded-full bg-accent/40 shrink-0 group-hover:bg-accent transition-colors duration-500" />
-                <h3 className="font-display tracking-display text-lg sm:text-xl text-foreground group-hover:text-accent transition-colors duration-500">
-                  {p.title}
-                </h3>
+                <div className="flex items-center gap-6 mb-2">
+                  <span className="font-body text-[11px] tracking-[0.3em] text-muted-foreground/50 shrink-0">
+                    {p.num}
+                  </span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent/40 shrink-0 group-hover:bg-accent transition-colors duration-500" />
+                  <h3 className="font-display tracking-display text-lg sm:text-xl text-foreground group-hover:text-accent transition-colors duration-500">
+                    {p.title}
+                  </h3>
+                </div>
+                <p className="font-body font-light text-[13px] text-muted-foreground leading-[1.7] pl-[3.75rem]">
+                  {p.desc}
+                </p>
               </div>
             ))}
           </StaggerChildren>
