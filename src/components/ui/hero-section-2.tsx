@@ -92,7 +92,7 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
             <motion.div variants={itemVariants}>
               {logo && (
                 <div className="flex items-center gap-4">
-                  <img src={logo.url} alt={logo.alt} className="h-14 sm:h-16 w-auto" />
+                  <img src={logo.url} alt={logo.alt} className="h-10 sm:h-16 w-auto" />
                   <div className="flex flex-col">
                     {logo.text && <span className="font-display text-lg text-foreground">{logo.text}</span>}
                     {slogan && <span className="font-body text-[11px] tracking-[0.3em] uppercase text-muted-foreground">{slogan}</span>}
