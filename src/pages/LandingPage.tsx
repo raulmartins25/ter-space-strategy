@@ -261,32 +261,35 @@ function PromiseSection() {
 function ForWhom() {
   const { ref, visible } = useScrollReveal();
   const items = [
-    "Atende clientes presencialmente no seu espaço",
-    "Quer cobrar mais sem precisar justificar",
-    "Deseja transmitir profissionalismo e sofisticação",
-    "Sabe que a primeira impressão define o negócio",
+    { icon: "🏢", text: "Atende clientes presencialmente no seu espaço" },
+    { icon: "💎", text: "Quer cobrar mais sem precisar justificar" },
+    { icon: "✨", text: "Deseja transmitir profissionalismo e sofisticação" },
+    { icon: "🤝", text: "Sabe que a primeira impressão define o negócio" },
   ];
   return (
     <section ref={ref} className="py-28 sm:py-36 px-8 sm:px-12 bg-secondary">
-      <div className="max-w-3xl mx-auto text-center">
+      <div className="max-w-5xl mx-auto">
         <div
-          className={`transition-all duration-[900ms] ease-out ${
+          className={`transition-all duration-[900ms] ease-out text-center mb-16 ${
             visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
           <p className="font-body text-[11px] tracking-[0.4em] uppercase text-muted-foreground mb-5">
             Para quem é
           </p>
-          <h2 className="font-display tracking-display text-3xl sm:text-4xl text-foreground mb-14 leading-[1.1]">
+          <h2 className="font-display tracking-display text-3xl sm:text-4xl text-foreground leading-[1.1]">
             Isso é para você se…
           </h2>
         </div>
-        <div className="space-y-6 text-left max-w-xl mx-auto">
-          <StaggerChildren visible={visible} baseDelay={200} increment={100}>
+        <div className="grid sm:grid-cols-2 gap-5">
+          <StaggerChildren visible={visible} baseDelay={200} increment={120}>
             {items.map((item) => (
-              <div key={item} className="flex items-start gap-4">
-                <span className="mt-1 text-accent font-display text-xl">✓</span>
-                <span className="font-body font-light text-foreground leading-[1.8]">{item}</span>
+              <div
+                key={item.text}
+                className="flex items-center gap-5 bg-background/60 backdrop-blur-sm rounded-2xl p-7 border border-border/50 hover:-translate-y-1 transition-all duration-300"
+              >
+                <span className="text-2xl flex-shrink-0">{item.icon}</span>
+                <span className="font-body text-[15px] text-foreground leading-[1.7]">{item.text}</span>
               </div>
             ))}
           </StaggerChildren>
