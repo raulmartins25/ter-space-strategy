@@ -90,7 +90,7 @@ function Hero() {
         <>
           Seu escritório está
           <br />
-          <em className="italic font-light">posicionando</em> ou
+          <em className="font-detail">posicionando</em> ou
           <br />
           afastando clientes?
         </>
