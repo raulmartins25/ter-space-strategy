@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight, X, ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -35,7 +35,11 @@ const PortfolioCarousel = ({
     return () => clearInterval(interval);
   }, [autoplay, handleNext, lightboxOpen]);
 
-  const randomRotate = () => `${Math.floor(Math.random() * 16) - 8}deg`;
+  // Pre-compute stable random rotations per item
+  const rotations = useMemo(
+    () => items.map(() => Math.floor(Math.random() * 16) - 8),
+    [items.length]
+  );
 
   return (
     <>
@@ -44,43 +48,28 @@ const PortfolioCarousel = ({
           {/* Image Section */}
           <div className="w-full md:w-1/2">
             <div className="relative h-[400px] sm:h-[480px] w-full">
-              <AnimatePresence>
-                {items.map((item, index) => (
-                  <motion.div
-                    key={item.src}
-                    initial={{
-                      opacity: 0,
-                      scale: 0.9,
-                      rotate: randomRotate(),
-                      z: -100,
-                    }}
-                    animate={{
-                      opacity: index === active ? 1 : 0.7,
-                      scale: index === active ? 1 : 0.95,
-                      rotate: index === active ? "0deg" : randomRotate(),
-                      z: index === active ? 0 : -100,
-                      zIndex: index === active ? 40 : items.length - index,
-                      y: index === active ? 0 : Math.random() * 20 - 10,
-                    }}
-                    exit={{
-                      opacity: 0,
-                      scale: 0.9,
-                      rotate: randomRotate(),
-                      z: 100,
-                    }}
-                    transition={{ duration: 0.5, ease: "easeInOut" }}
-                    className="absolute inset-0 origin-bottom cursor-pointer"
-                    onClick={() => setLightboxOpen(true)}
-                  >
-                    <img
-                      src={item.src}
-                      alt={item.title}
-                      className="h-full w-full rounded-2xl object-cover shadow-xl"
-                      draggable={false}
-                    />
-                  </motion.div>
-                ))}
-              </AnimatePresence>
+              {items.map((item, index) => (
+                <motion.div
+                  key={item.src}
+                  animate={{
+                    opacity: index === active ? 1 : 0.7,
+                    scale: index === active ? 1 : 0.95,
+                    rotate: index === active ? 0 : rotations[index],
+                    zIndex: index === active ? 40 : items.length - index,
+                    y: index === active ? 0 : (rotations[index] % 5),
+                  }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                  className="absolute inset-0 origin-bottom cursor-pointer"
+                  onClick={() => setLightboxOpen(true)}
+                >
+                  <img
+                    src={item.src}
+                    alt={item.title}
+                    className="h-full w-full rounded-2xl object-cover shadow-xl"
+                    draggable={false}
+                  />
+                </motion.div>
+              ))}
             </div>
           </div>
 
