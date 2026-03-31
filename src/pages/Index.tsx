@@ -8,6 +8,7 @@ import Navbar from "@/components/Navbar";
 import logoEterFooter from "@/assets/logo-eter-footer.png";
 import heroBg from "@/assets/hero-bg.jpg";
 import sociasImg from "@/assets/socias.png";
+import sociasAboutImg from "@/assets/socias-about.jpeg";
 import antesObra from "@/assets/antes-obra.jpg";
 import depoisObra from "@/assets/depois-obra.jpg";
 import clinica1 from "@/assets/clinica-1.jpg";
