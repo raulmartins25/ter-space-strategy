@@ -4,6 +4,7 @@ import { MessageCircle, ArrowRight, Target, Lightbulb, Ruler } from "lucide-reac
 import { PortfolioCarousel } from "@/components/ui/portfolio-carousel";
 import { HeroSection } from "@/components/ui/hero-section-2";
 import logoEter from "@/assets/logo-eter.png";
+import logoEterFooter from "@/assets/logo-eter-footer.png";
 import antesImg from "@/assets/antes.jpg";
 import depoisImg from "@/assets/depois.jpg";
 import clinica1 from "@/assets/clinica-1.jpg";
@@ -430,7 +431,7 @@ function Footer() {
     <footer className="py-16 px-8 sm:px-12 border-t border-border">
       <div className="max-w-5xl mx-auto flex flex-col items-center gap-10">
         <div>
-          <img src={logoEter} alt="Éter Arquitetura e Design" className="h-14 w-auto opacity-80" />
+          <img src={logoEterFooter} alt="Éter Arquitetura e Design" className="h-14 w-auto opacity-80" />
         </div>
       </div>
       <div className="max-w-5xl mx-auto mt-12 pt-8 border-t border-border">
