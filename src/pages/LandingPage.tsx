@@ -88,7 +88,7 @@ function Hero() {
       {/* Diagonal gradient overlay — dark to transparent */}
       <div className="absolute inset-0 bg-gradient-to-tr from-[hsl(var(--eter-preto)/0.72)] via-[hsl(var(--eter-preto)/0.35)] to-transparent" />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-8 sm:px-12 pb-24 sm:pb-32 pt-40 w-full">
+      <div className="relative z-10 max-w-6xl mx-auto px-8 sm:px-12 pb-24 sm:pb-32 pt-24 sm:pt-28 w-full">
         <img src={logoEter} alt="Éter Arquitetura e Design" className="hero-enter hero-enter-1 h-16 sm:h-20 w-auto mb-6 opacity-90" />
         <div className="deco-line hero-enter hero-enter-1 mb-8 opacity-60" />
         <h1 className="hero-enter hero-enter-2 font-display tracking-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light leading-[1.02] text-white mb-8 max-w-4xl [text-shadow:_0_2px_30px_rgba(0,0,0,0.5)]">
