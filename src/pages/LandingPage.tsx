@@ -463,10 +463,6 @@ export default function LandingPage() {
     <div className="font-body bg-background text-foreground overflow-x-hidden">
       <Hero />
       <ProblemBlock />
-      <ImageDivider
-        src="https://images.unsplash.com/photo-1604328698692-f76ea9498e76?auto=format&fit=crop&w=1920&q=80"
-        alt="Interior de escritório com materiais nobres"
-      />
       <BeliefBreak />
       <PromiseSection />
       <ImageDivider
