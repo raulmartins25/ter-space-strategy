@@ -7,6 +7,8 @@ import logoEter from "@/assets/logo-eter.png";
 import logoEterFooter from "@/assets/logo-eter-footer.png";
 import antesImg from "@/assets/antes.jpg";
 import depoisImg from "@/assets/depois.jpg";
+import antesObra from "@/assets/antes-obra.jpg";
+import depoisObra from "@/assets/depois-obra.jpg";
 import clinica1 from "@/assets/clinica-1.jpg";
 import clinica2 from "@/assets/clinica-2.jpg";
 import clinica3 from "@/assets/clinica-3.jpg";
