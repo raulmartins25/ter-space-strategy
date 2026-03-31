@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { MessageCircle, ArrowRight, Target, Lightbulb, Ruler } from "lucide-react";
+import { StackedCardsInteraction } from "@/components/ui/stacked-cards-interaction";
 import logoEter from "@/assets/logo-eter.png";
 
 const WHATSAPP_URL =
@@ -354,35 +355,52 @@ function Process() {
   );
 }
 
-/* ─── PROJETOS — Asymmetric Grid ─── */
+/* ─── PROJETOS — Stacked Cards ─── */
 function Projects() {
   const { ref, visible } = useScrollReveal();
-  const projects = [
+  const projectSets = [
     {
-      src: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
-      title: "Escritório Jurídico",
-      subtitle: "São Paulo, SP",
-      large: true,
+      label: "Corporativo",
+      cards: [
+        {
+          image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
+          title: "Escritório Jurídico",
+          description: "São Paulo, SP",
+        },
+        {
+          image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80",
+          title: "Consultoria Financeira",
+          description: "Rio de Janeiro, RJ",
+        },
+        {
+          image: "https://images.unsplash.com/photo-1604328698692-f76ea9498e76?auto=format&fit=crop&w=800&q=80",
+          title: "Sede Corporativa",
+          description: "Belo Horizonte, MG",
+        },
+      ],
     },
     {
-      src: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80",
-      title: "Clínica Premium",
-      subtitle: "Curitiba, PR",
-      large: false,
-    },
-    {
-      src: "https://images.unsplash.com/photo-1604328698692-f76ea9498e76?auto=format&fit=crop&w=800&q=80",
-      title: "Consultoria Financeira",
-      subtitle: "Rio de Janeiro, RJ",
-      large: false,
-    },
-    {
-      src: "https://images.unsplash.com/photo-1572025442646-866d16c84a54?auto=format&fit=crop&w=1200&q=80",
-      title: "Sede Corporativa",
-      subtitle: "Belo Horizonte, MG",
-      large: true,
+      label: "Saúde & Bem-estar",
+      cards: [
+        {
+          image: "https://images.unsplash.com/photo-1572025442646-866d16c84a54?auto=format&fit=crop&w=1200&q=80",
+          title: "Clínica Premium",
+          description: "Curitiba, PR",
+        },
+        {
+          image: "https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&fit=crop&w=800&q=80",
+          title: "Espaço Terapêutico",
+          description: "Florianópolis, SC",
+        },
+        {
+          image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+          title: "Centro Médico",
+          description: "Porto Alegre, RS",
+        },
+      ],
     },
   ];
+
   return (
     <section ref={ref} className="py-28 sm:py-36 px-8 sm:px-12 bg-secondary">
       <div className="max-w-6xl mx-auto">
@@ -398,69 +416,20 @@ function Projects() {
             Projetos que comunicam valor
           </h2>
         </div>
-        {/* Asymmetric: large left + 2 small right, then large right */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          <StaggerChildren visible={visible} baseDelay={200} increment={150}>
-            {/* Large — spans 2 cols */}
-            <div className="md:col-span-2 group">
-              <div className="img-hover-wrap rounded-2xl">
-                <img
-                  src={projects[0].src}
-                  alt={projects[0].title}
-                  className="w-full h-[300px] sm:h-[420px] object-cover rounded-2xl"
-                  loading="lazy"
+        <div className="grid md:grid-cols-2 gap-16">
+          <StaggerChildren visible={visible} baseDelay={200} increment={250}>
+            {projectSets.map((set) => (
+              <div key={set.label} className="flex flex-col items-center gap-8">
+                <StackedCardsInteraction
+                  cards={set.cards}
+                  spreadDistance={45}
+                  rotationAngle={6}
                 />
+                <p className="font-body text-[11px] tracking-[0.3em] uppercase text-muted-foreground">
+                  {set.label}
+                </p>
               </div>
-              <div className="mt-5">
-                <h3 className="font-display tracking-display text-xl text-foreground">{projects[0].title}</h3>
-                <p className="font-body font-light text-sm text-muted-foreground mt-1">{projects[0].subtitle}</p>
-              </div>
-            </div>
-            {/* Small — 1 col */}
-            <div className="group">
-              <div className="img-hover-wrap rounded-2xl">
-                <img
-                  src={projects[1].src}
-                  alt={projects[1].title}
-                  className="w-full h-[300px] sm:h-[420px] object-cover rounded-2xl"
-                  loading="lazy"
-                />
-              </div>
-              <div className="mt-5">
-                <h3 className="font-display tracking-display text-xl text-foreground">{projects[1].title}</h3>
-                <p className="font-body font-light text-sm text-muted-foreground mt-1">{projects[1].subtitle}</p>
-              </div>
-            </div>
-            {/* Small — 1 col */}
-            <div className="group">
-              <div className="img-hover-wrap rounded-2xl">
-                <img
-                  src={projects[2].src}
-                  alt={projects[2].title}
-                  className="w-full h-[300px] sm:h-[420px] object-cover rounded-2xl"
-                  loading="lazy"
-                />
-              </div>
-              <div className="mt-5">
-                <h3 className="font-display tracking-display text-xl text-foreground">{projects[2].title}</h3>
-                <p className="font-body font-light text-sm text-muted-foreground mt-1">{projects[2].subtitle}</p>
-              </div>
-            </div>
-            {/* Large — spans 2 cols */}
-            <div className="md:col-span-2 group">
-              <div className="img-hover-wrap rounded-2xl">
-                <img
-                  src={projects[3].src}
-                  alt={projects[3].title}
-                  className="w-full h-[300px] sm:h-[420px] object-cover rounded-2xl"
-                  loading="lazy"
-                />
-              </div>
-              <div className="mt-5">
-                <h3 className="font-display tracking-display text-xl text-foreground">{projects[3].title}</h3>
-                <p className="font-body font-light text-sm text-muted-foreground mt-1">{projects[3].subtitle}</p>
-              </div>
-            </div>
+            ))}
           </StaggerChildren>
         </div>
       </div>
