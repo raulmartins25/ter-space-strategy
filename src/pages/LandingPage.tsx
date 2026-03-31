@@ -126,10 +126,10 @@ function Hero() {
 function ProblemBlock() {
   const { ref, visible } = useScrollReveal();
   const pains = [
-    { num: "01", title: "Falta de autoridade", desc: "O cliente não sente confiança ao entrar. O espaço não reflete sua competência." },
-    { num: "02", title: "Ambiente genérico", desc: "Sem identidade, sem diferencial. Igual a qualquer outro escritório da região." },
-    { num: "03", title: "Não transmite valor", desc: "O ambiente desvaloriza seu serviço e o cliente já entra negociando preço." },
-    { num: "04", title: "Não converte clientes", desc: "Você perde negócios sem entender por quê. O espaço sabota a decisão." },
+    { title: "Falta de autoridade", desc: "O cliente não sente confiança ao entrar. O espaço não reflete sua competência." },
+    { title: "Ambiente genérico", desc: "Sem identidade, sem diferencial. Igual a qualquer outro escritório da região." },
+    { title: "Não transmite valor", desc: "O ambiente desvaloriza seu serviço e o cliente já entra negociando preço." },
+    { title: "Não converte clientes", desc: "Você perde negócios sem entender por quê. O espaço sabota a decisão." },
   ];
 
   return (
