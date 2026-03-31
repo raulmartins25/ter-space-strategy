@@ -435,8 +435,8 @@ function PartnersPhoto() {
 /* ─── CTA FINAL ─── */
 function FinalCTA() {
   return (
-    <RevealSection className="pt-16 sm:pt-20 pb-32 sm:pb-40 px-8 sm:px-12" bg="bg-foreground">
-      <div className="max-w-3xl mx-auto text-center">
+    <RevealSection className="pt-16 sm:pt-20 pb-32 sm:pb-40 px-8 sm:px-12 relative z-20" bg="bg-foreground">
+      <div className="max-w-3xl mx-auto text-center relative z-20">
         <div className="deco-line mx-auto mb-10 bg-accent/40" />
         <h2 className="font-display tracking-display text-3xl sm:text-4xl md:text-5xl text-secondary mb-8 leading-[1.1]">
           Se o seu escritório não impressiona, ele negocia seu preço por você.
