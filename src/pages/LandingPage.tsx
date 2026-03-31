@@ -465,10 +465,6 @@ export default function LandingPage() {
       <ProblemBlock />
       <BeliefBreak />
       <PromiseSection />
-      <ImageDivider
-        src="https://images.unsplash.com/photo-1572025442646-866d16c84a54?auto=format&fit=crop&w=1920&q=80"
-        alt="Espaço corporativo moderno"
-      />
       
       <Process />
       <Projects />
