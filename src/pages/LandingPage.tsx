@@ -435,19 +435,24 @@ function Projects() {
       label: "Lojas",
       cards: [
         {
-          image: "https://images.unsplash.com/photo-1572025442646-866d16c84a54?auto=format&fit=crop&w=1200&q=80",
-          title: "Clínica Premium",
-          description: "Curitiba, PR",
+          image: loja1,
+          title: "Loja de Moda",
+          description: "Projeto de interiores",
         },
         {
-          image: "https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&fit=crop&w=800&q=80",
-          title: "Espaço Terapêutico",
-          description: "Florianópolis, SC",
+          image: loja2,
+          title: "Loja Pétalla",
+          description: "Projeto de interiores",
         },
         {
-          image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
-          title: "Centro Médico",
-          description: "Porto Alegre, RS",
+          image: loja3,
+          title: "Loja Pétalla",
+          description: "Projeto de interiores",
+        },
+        {
+          image: loja4,
+          title: "Loja Pétalla",
+          description: "Projeto de interiores",
         },
       ],
     },
