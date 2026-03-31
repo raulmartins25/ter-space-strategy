@@ -415,6 +415,16 @@ function Projects() {
           title: "Consultório Médico",
           description: "Projeto de interiores",
         },
+        {
+          image: clinica3,
+          title: "Recepção Clínica",
+          description: "Projeto de interiores",
+        },
+        {
+          image: clinica4,
+          title: "Sala de Atendimento",
+          description: "Projeto de interiores",
+        },
       ],
     },
     {
