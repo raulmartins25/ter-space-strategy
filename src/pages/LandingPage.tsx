@@ -103,9 +103,9 @@ function Hero() {
       }}
       backgroundImage="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80"
       contactInfo={{
-        website: "eterarquitetura.com",
-        phone: "+55 (XX) XXXXX-XXXX",
-        address: "São Paulo, SP",
+        website: "",
+        phone: "",
+        address: "",
       }}
     />
   );

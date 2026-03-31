@@ -131,26 +131,6 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
             </div>
           </div>
 
-          {/* Bottom Section: Footer Info */}
-          <motion.div
-            variants={itemVariants}
-            className="mt-16 lg:mt-0"
-          >
-            <div className="flex flex-wrap gap-8 text-sm font-body font-light text-muted-foreground border-t border-border pt-8">
-              <div className="flex items-center gap-2">
-                <InfoIcon type="website" />
-                {contactInfo.website}
-              </div>
-              <div className="flex items-center gap-2">
-                <InfoIcon type="phone" />
-                {contactInfo.phone}
-              </div>
-              <div className="flex items-center gap-2">
-                <InfoIcon type="address" />
-                {contactInfo.address}
-              </div>
-            </div>
-          </motion.div>
         </motion.div>
 
         {/* Right Side: Image with Clip Path Animation */}
