@@ -7,6 +7,10 @@ import clinica1 from "@/assets/clinica-1.jpg";
 import clinica2 from "@/assets/clinica-2.jpg";
 import clinica3 from "@/assets/clinica-3.jpg";
 import clinica4 from "@/assets/clinica-4.jpg";
+import loja1 from "@/assets/loja-1.jpg";
+import loja2 from "@/assets/loja-2.jpg";
+import loja3 from "@/assets/loja-3.jpg";
+import loja4 from "@/assets/loja-4.jpg";
 
 const WHATSAPP_URL =
   "https://wa.me/55XXXXXXXXXXX?text=Quero%20uma%20an%C3%A1lise%20do%20meu%20escrit%C3%B3rio";
@@ -431,19 +435,24 @@ function Projects() {
       label: "Lojas",
       cards: [
         {
-          image: "https://images.unsplash.com/photo-1572025442646-866d16c84a54?auto=format&fit=crop&w=1200&q=80",
-          title: "Clínica Premium",
-          description: "Curitiba, PR",
+          image: loja1,
+          title: "Loja de Moda",
+          description: "Projeto de interiores",
         },
         {
-          image: "https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&fit=crop&w=800&q=80",
-          title: "Espaço Terapêutico",
-          description: "Florianópolis, SC",
+          image: loja2,
+          title: "Loja Pétalla",
+          description: "Projeto de interiores",
         },
         {
-          image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
-          title: "Centro Médico",
-          description: "Porto Alegre, RS",
+          image: loja3,
+          title: "Loja Pétalla",
+          description: "Projeto de interiores",
+        },
+        {
+          image: loja4,
+          title: "Loja Pétalla",
+          description: "Projeto de interiores",
         },
       ],
     },
