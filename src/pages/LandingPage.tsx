@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from "react"; // refresh
+import { useEffect, useRef, useState } from "react";
+import { ImageComparison, ImageComparisonImage, ImageComparisonSlider } from "@/components/ui/image-comparison";
 import { MessageCircle, ArrowRight, Target, Lightbulb, Ruler } from "lucide-react";
 import { PortfolioCarousel } from "@/components/ui/portfolio-carousel";
 import { HeroSection } from "@/components/ui/hero-section-2";
@@ -119,15 +120,9 @@ function Hero() {
   );
 }
 
-/* ─── PROBLEMA ─── */
+/* ─── PROBLEMA — Image Comparison ─── */
 function ProblemBlock() {
   const { ref, visible } = useScrollReveal();
-  const problems = [
-    { title: "Falta de autoridade", desc: "Seu espaço não transmite a experiência que você tem." },
-    { title: "Ambiente genérico", desc: "Parece qualquer outro escritório — sem identidade, sem memória." },
-    { title: "Não transmite valor", desc: "O cliente entra e já começa a negociar seu preço." },
-    { title: "Não converte", desc: "O ambiente trabalha contra você, não a seu favor." },
-  ];
   return (
     <section ref={ref} className="py-28 sm:py-36 px-8 sm:px-12">
       <div className="max-w-5xl mx-auto">
@@ -143,24 +138,32 @@ function ProblemBlock() {
             Seu espaço pode estar custando clientes — e você nem percebe.
           </h2>
         </div>
-        <div className="grid sm:grid-cols-2 gap-6">
-          <StaggerChildren visible={visible} baseDelay={200} increment={120}>
-            {problems.map((p) => (
-              <div
-                key={p.title}
-                className="border border-border rounded-xl p-10 sm:p-12 hover:-translate-y-1 transition-all duration-300 group cursor-default"
-              >
-                <div className="border-b-2 border-transparent group-hover:border-accent transition-colors duration-500 pb-8">
-                  <h3 className="font-display tracking-display text-2xl text-foreground mb-3">
-                    {p.title}
-                  </h3>
-                  <p className="font-body font-light text-muted-foreground leading-[1.8] text-[15px]">
-                    {p.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </StaggerChildren>
+        <div
+          className={`transition-all duration-[900ms] ease-out ${
+            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+          style={{ transitionDelay: visible ? "300ms" : "0ms" }}
+        >
+          <ImageComparison className="aspect-[16/9] w-full rounded-2xl shadow-xl" enableHover>
+            <ImageComparisonImage
+              src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80"
+              className="grayscale brightness-75"
+              alt="Antes — espaço genérico"
+              position="left"
+            />
+            <ImageComparisonImage
+              src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=80"
+              alt="Depois — espaço transformado"
+              position="right"
+            />
+            <ImageComparisonSlider className="w-0.5 bg-white/40 backdrop-blur-sm">
+              <div className="absolute top-1/2 left-1/2 w-5 h-5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white shadow-lg" />
+            </ImageComparisonSlider>
+          </ImageComparison>
+          <div className="flex justify-between mt-6">
+            <p className="font-body text-[11px] tracking-[0.3em] uppercase text-muted-foreground">Antes</p>
+            <p className="font-body text-[11px] tracking-[0.3em] uppercase text-muted-foreground">Depois</p>
+          </div>
         </div>
       </div>
     </section>
