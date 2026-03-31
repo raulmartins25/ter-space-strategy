@@ -122,9 +122,48 @@ function Hero() {
   );
 }
 
-/* ─── PROBLEMA — Image Comparison ─── */
+/* ─── PROBLEMA — Pain Point Cards ─── */
 function ProblemBlock() {
   const { ref, visible } = useScrollReveal();
+  const pains = [
+    {
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 5.636a9 9 0 11-12.728 0M12 9v4m0 4h.01" />
+        </svg>
+      ),
+      title: "Falta de autoridade",
+      desc: "Seu espaço não comunica competência. O cliente duvida antes mesmo de ouvir você.",
+    },
+    {
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      ),
+      title: "Ambiente genérico",
+      desc: "Parece igual a todos os outros. Nenhum elemento diferencia ou marca presença.",
+    },
+    {
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M13.875 18.825A10.05 10.05 0 0112 19c-5 0-9.27-3.11-10.5-7.5a10.05 10.05 0 013.16-4.96M6.53 6.53A9.96 9.96 0 0112 5c5 0 9.27 3.11 10.5 7.5a10.05 10.05 0 01-4.02 5.18M3 3l18 18" />
+        </svg>
+      ),
+      title: "Não transmite valor",
+      desc: "O ambiente desvaloriza seu serviço. O cliente negocia preço porque não enxerga diferencial.",
+    },
+    {
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25V9m-3 0h13.5M5.25 9v10.5A2.25 2.25 0 007.5 21.75h9a2.25 2.25 0 002.25-2.25V9" />
+        </svg>
+      ),
+      title: "Não converte clientes",
+      desc: "Você perde negócios sem entender por quê. O espaço sabota a decisão de compra.",
+    },
+  ];
+
   return (
     <section ref={ref} className="py-28 sm:py-36 px-8 sm:px-12">
       <div className="max-w-5xl mx-auto">
@@ -137,29 +176,29 @@ function ProblemBlock() {
             Seu espaço pode estar custando clientes — e você nem percebe.
           </h2>
         </div>
-        <div
-          className={`transition-all duration-[900ms] ease-out ${
-            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
-          style={{ transitionDelay: visible ? "300ms" : "0ms" }}
-        >
-          <div className="max-w-lg mx-auto">
-            <ImageComparison className="aspect-[3/4] w-full rounded-2xl shadow-xl" enableHover>
-              <ImageComparisonImage
-                src={antesImg}
-                alt="Antes — espaço genérico"
-                position="right"
-              />
-              <ImageComparisonImage
-                src={depoisImg}
-                alt="Depois — espaço transformado"
-                position="left"
-              />
-              <ImageComparisonSlider className="w-0.5 bg-white/40 backdrop-blur-sm">
-                <div className="absolute top-1/2 left-1/2 w-5 h-5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white shadow-lg" />
-              </ImageComparisonSlider>
-            </ImageComparison>
-          </div>
+        <div className="grid sm:grid-cols-2 gap-6">
+          <StaggerChildren visible={visible} baseDelay={200} increment={150}>
+            {pains.map((p) => (
+              <div
+                key={p.title}
+                className="group relative rounded-2xl border border-border bg-background p-8 sm:p-10 overflow-hidden hover:border-accent/40 transition-all duration-500"
+              >
+                {/* Decorative gradient blob */}
+                <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-accent/[0.06] blur-2xl group-hover:bg-accent/[0.12] transition-all duration-700" />
+                <div className="relative z-10">
+                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-accent/[0.08] text-accent mb-6 group-hover:bg-accent/[0.15] transition-colors duration-500">
+                    {p.icon}
+                  </div>
+                  <h3 className="font-display tracking-display text-xl sm:text-2xl text-foreground mb-3 leading-[1.2]">
+                    {p.title}
+                  </h3>
+                  <p className="font-body font-light text-[15px] text-muted-foreground leading-[1.8]">
+                    {p.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </StaggerChildren>
         </div>
       </div>
     </section>
