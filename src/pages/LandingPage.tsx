@@ -342,7 +342,7 @@ function Projects() {
       src: clinica4,
     },
     {
-      title: "Loja de Moda",
+      title: "Loja Pétalla",
       category: "Lojas",
       description: "Exposição inteligente com araras metálicas e layout aberto, maximizando a experiência de compra.",
       src: loja1,
