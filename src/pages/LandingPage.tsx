@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { MessageCircle, ArrowRight, Target, Lightbulb, Ruler } from "lucide-react";
-import { StackedCardsInteraction } from "@/components/ui/stacked-cards-interaction";
+import { PortfolioCarousel } from "@/components/ui/portfolio-carousel";
 import { HeroSection } from "@/components/ui/hero-section-2";
 import logoEter from "@/assets/logo-eter.png";
 import clinica1 from "@/assets/clinica-1.jpg";
@@ -313,59 +313,57 @@ function Process() {
   );
 }
 
-/* ─── PROJETOS — Stacked Cards ─── */
+/* ─── PROJETOS — Portfolio Carousel ─── */
 function Projects() {
   const { ref, visible } = useScrollReveal();
-  const projectSets = [
+  const portfolioItems = [
     {
-      label: "Clínicas",
-      cards: [
-        {
-          image: clinica1,
-          title: "Consultório Médico",
-          description: "Projeto de interiores",
-        },
-        {
-          image: clinica2,
-          title: "Consultório Médico",
-          description: "Projeto de interiores",
-        },
-        {
-          image: clinica3,
-          title: "Recepção Clínica",
-          description: "Projeto de interiores",
-        },
-        {
-          image: clinica4,
-          title: "Sala de Atendimento",
-          description: "Projeto de interiores",
-        },
-      ],
+      title: "Consultório Médico",
+      category: "Clínicas",
+      description: "Marcenaria sob medida com iluminação indireta, criando um ambiente acolhedor e profissional para atendimento médico.",
+      src: clinica1,
     },
     {
-      label: "Lojas",
-      cards: [
-        {
-          image: loja1,
-          title: "Loja de Moda",
-          description: "Projeto de interiores",
-        },
-        {
-          image: loja2,
-          title: "Loja Pétalla",
-          description: "Projeto de interiores",
-        },
-        {
-          image: loja3,
-          title: "Loja Pétalla",
-          description: "Projeto de interiores",
-        },
-        {
-          image: loja4,
-          title: "Loja Pétalla",
-          description: "Projeto de interiores",
-        },
-      ],
+      title: "Consultório Médico",
+      category: "Clínicas",
+      description: "Design funcional e elegante com materiais nobres, transmitindo confiança e sofisticação aos pacientes.",
+      src: clinica2,
+    },
+    {
+      title: "Recepção Clínica",
+      category: "Clínicas",
+      description: "Espaço de espera projetado para conforto e bem-estar, com mobiliário contemporâneo e arte decorativa.",
+      src: clinica3,
+    },
+    {
+      title: "Sala de Atendimento",
+      category: "Clínicas",
+      description: "Ambiente de trabalho com mesa em mármore verde e estante em madeira, unindo funcionalidade e estética.",
+      src: clinica4,
+    },
+    {
+      title: "Loja de Moda",
+      category: "Lojas",
+      description: "Exposição inteligente com araras metálicas e layout aberto, maximizando a experiência de compra.",
+      src: loja1,
+    },
+    {
+      title: "Loja Pétalla",
+      category: "Lojas",
+      description: "Identidade visual integrada ao espaço com parede destaque em terracota e prateleiras de exposição.",
+      src: loja2,
+    },
+    {
+      title: "Loja Pétalla",
+      category: "Lojas",
+      description: "Layout com arcos e iluminação direcional, criando uma experiência sensorial para os clientes.",
+      src: loja3,
+    },
+    {
+      title: "Loja Pétalla",
+      category: "Lojas",
+      description: "Mesa central de produtos com vista para o interior da loja, integrando os ambientes de forma fluida.",
+      src: loja4,
     },
   ];
 
@@ -384,21 +382,13 @@ function Projects() {
             Projetos que comunicam valor
           </h2>
         </div>
-        <div className="grid md:grid-cols-2 gap-16">
-          <StaggerChildren visible={visible} baseDelay={200} increment={250}>
-            {projectSets.map((set) => (
-              <div key={set.label} className="flex flex-col items-center gap-8">
-                <StackedCardsInteraction
-                  cards={set.cards}
-                  spreadDistance={45}
-                  rotationAngle={6}
-                />
-                <p className="font-body text-[11px] tracking-[0.3em] uppercase text-muted-foreground">
-                  {set.label}
-                </p>
-              </div>
-            ))}
-          </StaggerChildren>
+        <div
+          className={`transition-all duration-[900ms] ease-out ${
+            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+          style={{ transitionDelay: visible ? "300ms" : "0ms" }}
+        >
+          <PortfolioCarousel items={portfolioItems} autoplay />
         </div>
       </div>
     </section>
