@@ -136,8 +136,8 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
         {/* Right Side: Image with Clip Path Animation */}
         <motion.div
           className="relative w-full lg:w-[45%] min-h-[400px] lg:min-h-0"
-          initial={{ clipPath: "inset(100% 0 0 0)" }}
-          animate={{ clipPath: "inset(0 0 0 0)" }}
+          initial={{ clipPath: "polygon(30% 0, 100% 0, 100% 100%, 0% 100%)", opacity: 0 }}
+          animate={{ clipPath: "polygon(20% 0, 100% 0, 100% 100%, 0% 100%)", opacity: 1 }}
           transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.3 }}
         >
           <img
