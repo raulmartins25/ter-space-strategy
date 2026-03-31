@@ -77,7 +77,7 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
     return (
       <div
         ref={ref}
-        className={cn("relative min-h-screen flex flex-col lg:flex-row overflow-hidden bg-background", className)}
+        className={cn("relative min-h-[auto] lg:min-h-screen flex flex-col lg:flex-row overflow-hidden bg-background", className)}
         {...props}
       >
         {/* Left Side: Content */}
