@@ -404,19 +404,14 @@ function Projects() {
       label: "Clínicas",
       cards: [
         {
-          image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
-          title: "Escritório Jurídico",
-          description: "São Paulo, SP",
+          image: clinica1,
+          title: "Consultório Médico",
+          description: "Projeto de interiores",
         },
         {
-          image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80",
-          title: "Consultoria Financeira",
-          description: "Rio de Janeiro, RJ",
-        },
-        {
-          image: "https://images.unsplash.com/photo-1604328698692-f76ea9498e76?auto=format&fit=crop&w=800&q=80",
-          title: "Sede Corporativa",
-          description: "Belo Horizonte, MG",
+          image: clinica2,
+          title: "Consultório Médico",
+          description: "Projeto de interiores",
         },
       ],
     },
