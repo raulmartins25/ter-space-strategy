@@ -144,7 +144,7 @@ function ProblemBlock() {
             Seu espaço pode estar custando clientes — e você nem percebe.
           </h2>
         </div>
-        <div className="space-y-0">
+        <div className="grid sm:grid-cols-2 gap-x-16 gap-y-0">
           <StaggerChildren visible={visible} baseDelay={200} increment={120}>
             {pains.map((p) => (
               <div
