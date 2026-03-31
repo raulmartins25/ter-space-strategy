@@ -1,17 +1,26 @@
 
 
-## Plan: Swap grayscale sides on image comparison
+## Plan: Add partner photo above FinalCTA with bottom-to-top gradient fade
 
-Currently the `position="left"` image has `className="grayscale"` and `position="right"` is colorful. The component clips `left` = revealed from the right side, `right` = revealed from the left side.
+### What
+Place the uploaded photo of the two partners (`IMG_7914-removebg-preview.png`) above the FinalCTA section, with a gradient that goes from transparent at the bottom to opaque at the top — creating a blend effect where the image fades into the dark brown CTA background below.
 
-To make left side gray and right side colorful (as the user sees it):
-- Move `className="grayscale"` from the `position="left"` image to the `position="right"` image
+### Steps
 
-### Change in `src/pages/LandingPage.tsx`
+1. **Copy image** to `src/assets/socias.png`
 
-In the `PromiseSection`, swap the `grayscale` class:
-- **Left image** (`position="left"`): remove `className="grayscale"` → colorful
-- **Right image** (`position="right"`): add `className="grayscale"` → grayscale
+2. **Add a new section between Projects and FinalCTA** in `LandingPage.tsx`:
+   - Container with `bg-foreground` (same brown as FinalCTA) and `relative overflow-hidden`
+   - The partner image centered, with a CSS gradient overlay (`mask-image` or a `div` with `bg-gradient-to-t from-foreground to-transparent`) covering the bottom portion
+   - This creates the effect of the image emerging from transparent at the bottom and becoming fully visible at the top
+   - Remove padding-top from FinalCTA to make the sections feel seamless
 
-This way, when the slider is at 50%, the left half shows grayscale and the right half shows colorful.
+3. **Implementation detail**:
+   - Use `mask-image: linear-gradient(to top, transparent, black 60%)` on the image for a clean fade effect
+   - Or overlay a `div` with `bg-gradient-to-t from-[hsl(var(--foreground))] to-transparent` on top of the image
+   - Image should be centered, reasonable max-width (~400-500px)
+
+### Files changed
+- `src/assets/socias.png` (new)
+- `src/pages/LandingPage.tsx` (add partner image section before FinalCTA)
 
