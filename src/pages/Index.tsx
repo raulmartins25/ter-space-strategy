@@ -540,8 +540,8 @@ function ContactCTA() {
         </div>
         <div className="flex flex-col items-center gap-2">
           <Instagram className="w-5 h-5 text-[#5c4336]/60" />
-          <a href="https://instagram.com/eter.arq" target="_blank" rel="noopener noreferrer" className="font-body text-[13px] text-[#5c4336]/80 hover:text-[#5c4336] transition-colors link-underline">
-            @eter.arq
+          <a href="https://www.instagram.com/eter.arqdesign" target="_blank" rel="noopener noreferrer" className="font-body text-[13px] text-[#5c4336]/80 hover:text-[#5c4336] transition-colors link-underline">
+            @eter.arqdesign
           </a>
         </div>
       </div>
