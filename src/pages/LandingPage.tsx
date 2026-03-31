@@ -3,6 +3,8 @@ import { MessageCircle, ArrowRight, Target, Lightbulb, Ruler } from "lucide-reac
 import { StackedCardsInteraction } from "@/components/ui/stacked-cards-interaction";
 import { HeroSection } from "@/components/ui/hero-section-2";
 import logoEter from "@/assets/logo-eter.png";
+import clinica1 from "@/assets/clinica-1.jpg";
+import clinica2 from "@/assets/clinica-2.jpg";
 
 const WHATSAPP_URL =
   "https://wa.me/55XXXXXXXXXXX?text=Quero%20uma%20an%C3%A1lise%20do%20meu%20escrit%C3%B3rio";
@@ -402,19 +404,14 @@ function Projects() {
       label: "Clínicas",
       cards: [
         {
-          image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
-          title: "Escritório Jurídico",
-          description: "São Paulo, SP",
+          image: clinica1,
+          title: "Consultório Médico",
+          description: "Projeto de interiores",
         },
         {
-          image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80",
-          title: "Consultoria Financeira",
-          description: "Rio de Janeiro, RJ",
-        },
-        {
-          image: "https://images.unsplash.com/photo-1604328698692-f76ea9498e76?auto=format&fit=crop&w=800&q=80",
-          title: "Sede Corporativa",
-          description: "Belo Horizonte, MG",
+          image: clinica2,
+          title: "Consultório Médico",
+          description: "Projeto de interiores",
         },
       ],
     },
