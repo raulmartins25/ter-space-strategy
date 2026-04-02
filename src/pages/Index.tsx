@@ -6,7 +6,7 @@ import { PortfolioCarousel } from "@/components/ui/portfolio-carousel";
 import Navbar from "@/components/Navbar";
 
 import logoEterFooter from "@/assets/logo-eter-footer.png";
-import heroBg from "@/assets/hero-bg.jpg";
+import heroBg from "@/assets/hero-bg-site.jpg";
 import sociasImg from "@/assets/socias.png";
 import sociasAboutImg from "@/assets/socias-about.jpeg";
 import antesObra from "@/assets/antes-obra.jpg";
