@@ -357,6 +357,8 @@ function Portfolio() {
     { title: "Numer+Pétalla", category: "Lojas", description: "Identidade visual integrada ao espaço com parede destaque em terracota.", src: loja2 },
     { title: "Numer+Pétalla", category: "Lojas", description: "Layout com arcos e iluminação direcional, criando experiência sensorial.", src: loja3 },
     { title: "Numer+Pétalla", category: "Lojas", description: "Mesa central de produtos integrando os ambientes de forma fluida.", src: loja4 },
+    { title: "Laboratório Salus", category: "Laboratórios", description: "Sala de espera com design moderno, cadeiras ergonômicas e iluminação linear embutida.", src: salus1 },
+    { title: "Laboratório Salus", category: "Laboratórios", description: "Atendimento funcional com divisórias numeradas, integração da marca ao espaço e mobiliário sob medida.", src: salus2 },
   ];
 
   return (
