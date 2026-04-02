@@ -218,7 +218,7 @@ function About() {
             <div className="grid grid-cols-3 gap-6">
               {[
                 { num: 7, suffix: "+", label: "Anos" },
-                { num: 150, suffix: "+", label: "Projetos" },
+                { num: 100, suffix: "+", label: "Projetos" },
                 { num: 12000, suffix: "", label: "m² projetados" },
               ].map((s) => (
                 <div key={s.label} className="text-center">
