@@ -201,7 +201,7 @@ function About() {
             </p>
             <div className="deco-line mb-8" />
             <h2 className="font-display tracking-display text-3xl sm:text-4xl text-foreground mb-8 leading-[1.1]">
-              Duas arquitetas. Uma visão de negócio.
+              Uma design de interiores e uma arquiteta. Uma visão de negócio.
             </h2>
             <p className="font-body font-light text-muted-foreground text-[15px] leading-[1.8] mb-6">
               Há mais de 7 anos no mercado, a Éter nasceu da convicção de que arquitetura não é decoração — é estratégia. 
