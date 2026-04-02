@@ -215,11 +215,9 @@ function About() {
             </p>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-6">
+             <div className="flex justify-center">
               {[
-                { num: 7, suffix: "+", label: "Anos" },
                 { num: 100, suffix: "+", label: "Projetos" },
-                { num: 12000, suffix: "", label: "m² projetados" },
               ].map((s) => (
                 <div key={s.label} className="text-center">
                   <p className="font-display tracking-display text-3xl sm:text-4xl text-foreground">
