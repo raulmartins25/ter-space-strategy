@@ -4,18 +4,14 @@
     <meta charset="utf-8" />
     <title>Redirecting...</title>
     <script>
-      const repo = "/app-eterarq";
       const l = window.location;
       l.replace(
         l.protocol +
           "//" +
           l.hostname +
           (l.port ? ":" + l.port : "") +
-          repo +
           "/?p=" +
-          encodeURIComponent(
-            l.pathname.slice(repo.length) + l.search
-          ) +
+          encodeURIComponent(l.pathname + l.search) +
           "&h=" +
           encodeURIComponent(l.hash)
       );
