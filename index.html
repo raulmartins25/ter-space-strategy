@@ -26,7 +26,7 @@
         var p = params.get("p");
         var h = params.get("h");
         if (p) {
-          var url = window.location.pathname + decodeURIComponent(p) + decodeURIComponent(h || "");
+          var url = decodeURIComponent(p) + decodeURIComponent(h || "");
           window.history.replaceState(null, null, url);
         }
       })();
