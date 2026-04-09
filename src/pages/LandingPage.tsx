@@ -5,6 +5,7 @@ import { PortfolioGrid } from "@/components/ui/portfolio-grid";
 import { HeroSection } from "@/components/ui/hero-section-2";
 import logoEter from "@/assets/logo-eter.png";
 import heroBg from "@/assets/hero-bg.jpg";
+import fundoBg from "@/assets/FUNDO.png";
 import logoEterFooter from "@/assets/logo-eter-footer.png";
 import antesImg from "@/assets/antes.jpg";
 import depoisImg from "@/assets/depois.jpg";
@@ -96,7 +97,7 @@ function StaggerChildren({
 function Hero() {
   return (
     <HeroSection
-      className="bg-[#b29b7b] text-[#f0e5db] [&_h1]:text-[#f0e5db] [&_p]:text-[#f0e5db]/70 [&_span]:text-[#f0e5db]/60"
+      className="text-[#f0e5db] [&_h1]:text-[#f0e5db] [&_p]:text-[#f0e5db]/70 [&_span]:text-[#f0e5db]/60"
       logo={{
         url: logoEter,
         alt: "Éter Arquitetura e Design",
