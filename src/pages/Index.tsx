@@ -15,7 +15,7 @@ import clinica1 from "@/assets/clinica-1.jpg";
 import clinica2 from "@/assets/clinica-2.jpg";
 
 import clinica4 from "@/assets/clinica-4.jpg";
-import loja1 from "@/assets/loja-1.jpg";
+
 import loja2 from "@/assets/loja-2.jpg";
 import loja3 from "@/assets/loja-3.jpg";
 import salus1 from "@/assets/salus-1.jpg";
@@ -351,7 +351,7 @@ function Portfolio() {
     { title: "Consultório Médico", category: "Clínicas", description: "Design funcional e elegante com materiais nobres, transmitindo confiança e sofisticação.", src: clinica2 },
     
     { title: "Sala de Atendimento", category: "Clínicas", description: "Ambiente de trabalho com mesa em mármore verde e estante em madeira.", src: clinica4 },
-    { title: "Numer+Pétalla", category: "Lojas", description: "Exposição inteligente com araras metálicas e layout aberto.", src: loja1 },
+    
     { title: "Numer+Pétalla", category: "Lojas", description: "Identidade visual integrada ao espaço com parede destaque em terracota.", src: loja2 },
     { title: "Numer+Pétalla", category: "Lojas", description: "Layout com arcos e iluminação direcional, criando experiência sensorial.", src: loja3 },
     { title: "Numer+Pétalla", category: "Lojas", description: "Mesa central de produtos integrando os ambientes de forma fluida.", src: loja4 },

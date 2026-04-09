@@ -14,7 +14,7 @@ import clinica1 from "@/assets/clinica-1.jpg";
 import clinica2 from "@/assets/clinica-2.jpg";
 
 import clinica4 from "@/assets/clinica-4.jpg";
-import loja1 from "@/assets/loja-1.jpg";
+
 import loja2 from "@/assets/loja-2.jpg";
 import loja3 from "@/assets/loja-3.jpg";
 import loja4 from "@/assets/loja-4.jpg";
@@ -349,12 +349,6 @@ function Projects() {
       category: "Clínicas",
       description: "Ambiente de trabalho com mesa em mármore verde e estante em madeira, unindo funcionalidade e estética.",
       src: clinica4,
-    },
-    {
-      title: "Numer+Pétalla",
-      category: "Lojas",
-      description: "Exposição inteligente com araras metálicas e layout aberto, maximizando a experiência de compra.",
-      src: loja1,
     },
     {
       title: "Numer+Pétalla",
