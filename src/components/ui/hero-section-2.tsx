@@ -41,6 +41,7 @@ interface HeroSectionProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 't
     icon?: React.ReactNode;
   };
   backgroundImage: string;
+  backgroundTexture?: string;
   contactInfo: {
     website: string;
     phone: string;
