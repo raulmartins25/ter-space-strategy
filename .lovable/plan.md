@@ -1,16 +1,17 @@
 
 
-## Plan: Remove "Recepção Clínica" photo from portfolio
+## Plan: Update LP Hero — new image + straight vertical division
 
-### Changes
+### Changes (only affects `/lp`)
 
-**`src/pages/LandingPage.tsx`**:
-- Remove the `import clinica3` line
-- Remove the portfolio item with `title: "Recepção Clínica"` and `src: clinica3`
+**1. Replace hero background image**
+- Copy `user-uploads://IMG_7927.jpg` → `src/assets/hero-bg.jpg` (overwrite)
 
-**`src/pages/Index.tsx`**:
-- Remove the `import clinica3` line
-- Remove the portfolio item with `title: "Recepção Clínica"` and `src: clinica3`
+**2. Remove diagonal clip-path in `src/components/ui/hero-section-2.tsx`**
+- Change line 147-148 clipPath from diagonal polygon to straight rectangle:
+  - `polygon(30% 0, 100% 0, 100% 100%, 0% 100%)` → `polygon(0 0, 100% 0, 100% 100%, 0 100%)`
+  - `polygon(20% 0, 100% 0, 100% 100%, 0% 100%)` → `polygon(0 0, 100% 0, 100% 100%, 0 100%)`
+- This makes the image section a clean rectangle with a straight vertical edge
 
-Both files already have the item — removing from both keeps the portfolio consistent across `/` and `/lp`.
+**No impact on `/`** — the Index page has its own inline hero and does not use this component.
 
