@@ -216,10 +216,18 @@ function BeliefBreak() {
 function PromiseSection() {
   const { ref, visible } = useScrollReveal();
   const benefits = [
-    "Aumenta a percepção de valor do seu serviço",
-    "Transmite autoridade antes de você dizer uma palavra",
-    "Eleva o ticket médio naturalmente",
-    "Fortalece sua marca no ambiente físico",
+    "Aumento do tempo de permanência no ambiente",
+    "Criar elementos agradáveis ao cliente, gerando conexão entre consumidor e marca",
+    "Aumento de ticket médio",
+    "Fidelização – percepção positiva, vontade de retornar",
+    "Direcionamento para reter seu cliente no espaço",
+    "Mudar a percepção de tempo",
+    "Bem estar e harmonia",
+    "Diferenciar marca",
+    "Marketing sensorial",
+    "Potencializar ponto de venda",
+    "Influenciar comportamento do consumidor",
+    "Melhorar performance da equipe",
   ];
   return (
     <section ref={ref} className="py-28 sm:py-36 px-8 sm:px-12">
