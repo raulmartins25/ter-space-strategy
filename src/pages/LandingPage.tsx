@@ -104,11 +104,11 @@ function Hero() {
       slogan=""
       title={
         <>
-          Seu escritório está
+          Seu espaço está fortalecendo
           <br />
-          <em className="font-detail">posicionando</em> ou
+          <em className="font-detail">conexões</em> ou criando
           <br />
-          afastando clientes?
+          barreiras silenciosas com seus clientes?
         </>
       }
       subtitle="Projetamos espaços corporativos que aumentam percepção de valor, confiança e fechamento de contratos."
