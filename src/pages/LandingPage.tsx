@@ -290,9 +290,9 @@ function PromiseSection() {
 function Process() {
   const { ref, visible } = useScrollReveal();
   const steps = [
-    { icon: Target, num: "01", title: "Diagnóstico Estratégico", desc: "Analisamos seu espaço, seu público e seus objetivos de negócio." },
-    { icon: Lightbulb, num: "02", title: "Projeto com Intenção", desc: "Cada elemento projetado para comunicar valor e gerar resultado." },
-    { icon: Ruler, num: "03", title: "Execução Orientada", desc: "Acompanhamento completo para garantir que o espaço entregue o que promete." },
+    { icon: Target, num: "01", title: "Diagnóstico Estratégico", desc: "Analisamos seu espaço, seu público e as diretrizes centrais do seu negócio." },
+    { icon: Lightbulb, num: "02", title: "Projetamos atmosferas", desc: "Transformamos estética em estratégia e experiências que conectam , envolvem e convertem." },
+    { icon: Ruler, num: "03", title: "Execução Orientada", desc: "Acompanhamento dedicado para garantir que o espaço entregue o que promete." },
   ];
   return (
     <section ref={ref} className="py-28 sm:py-36 px-8 sm:px-12">
