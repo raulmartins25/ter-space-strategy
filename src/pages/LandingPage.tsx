@@ -323,7 +323,7 @@ function Process() {
     { icon: Ruler, num: "03", title: "Execução Orientada", desc: "Acompanhamento dedicado para garantir que o espaço entregue o que promete." },
   ];
   return (
-    <section ref={ref} className="py-28 sm:py-36 px-8 sm:px-12">
+    <section ref={ref} className="py-28 sm:py-36 px-8 sm:px-12 bg-white">
       <div className="max-w-5xl mx-auto">
         <div
           className={`transition-all duration-[900ms] ease-out text-center mb-20 ${
