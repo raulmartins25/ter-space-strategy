@@ -338,43 +338,13 @@ function Process() {
 /* ─── PROJETOS — Portfolio Carousel ─── */
 function Projects() {
   const { ref, visible } = useScrollReveal();
-  const portfolioItems = [
-    {
-      title: "Consultório Médico",
-      category: "Clínicas",
-      description: "Marcenaria sob medida com iluminação indireta, criando um ambiente acolhedor e profissional para atendimento médico.",
-      src: clinica1,
-    },
-    {
-      title: "Consultório Médico",
-      category: "Clínicas",
-      description: "Design funcional e elegante com materiais nobres, transmitindo confiança e sofisticação aos pacientes.",
-      src: clinica2,
-    },
-    {
-      title: "Sala de Atendimento",
-      category: "Clínicas",
-      description: "Ambiente de trabalho com mesa em mármore verde e estante em madeira, unindo funcionalidade e estética.",
-      src: clinica4,
-    },
-    {
-      title: "Numer+Pétalla",
-      category: "Lojas",
-      description: "Identidade visual integrada ao espaço com parede destaque em terracota e prateleiras de exposição.",
-      src: loja2,
-    },
-    {
-      title: "Numer+Pétalla",
-      category: "Lojas",
-      description: "Layout com arcos e iluminação direcional, criando uma experiência sensorial para os clientes.",
-      src: loja3,
-    },
-    {
-      title: "Numer+Pétalla",
-      category: "Lojas",
-      description: "Mesa central de produtos com vista para o interior da loja, integrando os ambientes de forma fluida.",
-      src: loja4,
-    },
+  const gridItems = [
+    { title: "Consultório Médico", image: clinica1 },
+    { title: "Consultório Médico", image: clinica2 },
+    { title: "Sala de Atendimento", image: clinica4 },
+    { title: "Numer+Pétalla", image: loja2 },
+    { title: "Numer+Pétalla", image: loja3 },
+    { title: "Numer+Pétalla", image: loja4 },
   ];
 
   return (
@@ -398,7 +368,7 @@ function Projects() {
           }`}
           style={{ transitionDelay: visible ? "300ms" : "0ms" }}
         >
-          <PortfolioCarousel items={portfolioItems} autoplay={false} />
+          <PortfolioGrid items={gridItems} />
         </div>
       </div>
     </section>
