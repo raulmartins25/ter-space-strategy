@@ -429,10 +429,10 @@ function FinalCTA() {
       <div className="max-w-3xl mx-auto text-center relative z-10 -mt-24 sm:-mt-32">
         <div className="deco-line mx-auto mb-10 bg-[#5c4336]/30" />
         <h2 className="font-display tracking-display text-3xl sm:text-4xl md:text-5xl text-[#5c4336] mb-8 leading-[1.1]">
-          Se o seu escritório não impressiona, ele negocia seu preço por você.
+          Seu ambiente te reduz ou te traduz?
         </h2>
         <p className="font-body font-light text-[#5c4336] text-base sm:text-lg mb-14 leading-[1.8]">
-          Solicite sua Análise de Performance Espacial e descubra o que seu
+          Solicite a Análise de Expressão Espacial e descubra o que seu
           ambiente está comunicando.
         </p>
         <a
