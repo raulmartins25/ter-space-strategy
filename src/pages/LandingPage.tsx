@@ -408,7 +408,7 @@ function Projects() {
 /* ─── CTA FINAL (com foto das sócias atrás) ─── */
 function FinalCTA() {
   return (
-    <RevealSection className="relative overflow-hidden pt-0 pb-32 sm:pb-40 px-8 sm:px-12" bg="bg-[#f0e5db]">
+    <RevealSection className="relative overflow-hidden pt-0 pb-32 sm:pb-40 px-8 sm:px-12" bg="bg-white">
       {/* Foto das sócias — atrás do texto */}
       <div className="flex justify-center mb-0 relative z-0">
         <div className="max-w-[320px] sm:max-w-[360px] w-full">
