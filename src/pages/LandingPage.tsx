@@ -193,7 +193,7 @@ function ImageDivider({ src, alt }: { src: string; alt: string }) {
 /* ─── QUEBRA DE CRENÇA ─── */
 function BeliefBreak() {
   return (
-    <RevealSection className="py-28 sm:py-36 px-8 sm:px-12" bg="bg-secondary">
+    <RevealSection className="py-28 sm:py-36 px-8 sm:px-12" bg="bg-[#fbfaf8]">
       <div className="max-w-3xl mx-auto text-center relative">
         {/* Decorative quote */}
         <span className="absolute -top-8 left-1/2 -translate-x-1/2 font-display text-[160px] leading-none text-accent/[0.08] select-none pointer-events-none">"</span>
