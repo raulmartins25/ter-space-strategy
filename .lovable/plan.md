@@ -1,38 +1,24 @@
 
 
-## Plan: Fix uneven row heights in benefits list
+## Plan: Replace hero background color with uploaded texture image
 
-The problem is that CSS grid pairs items into rows — when one item wraps to 2 lines and its neighbor doesn't, the row expands unevenly, creating visible whitespace gaps.
+The hero section currently uses a solid beige (`bg-[#b29b7b]`) background on the left side. Replace it with the uploaded gray concrete/marble texture image (`FUNDO.png`).
 
-**Solution**: Instead of a single grid that creates rows, split the benefits into two independent columns. Each column flows vertically on its own, so a long item on the left doesn't affect spacing on the right.
+### Changes
 
-### Changes to `src/pages/LandingPage.tsx`
+**1. Copy uploaded image to project assets**
+- Copy `user-uploads://FUNDO.png` to `src/assets/FUNDO.png`
 
-1. **Split the `benefits` array into two explicit arrays** — manually balance long vs short items across left/right columns so both columns have similar total height
-2. **Replace the single `<ul>` grid** with two side-by-side `<ul>` elements inside a flex container, each rendering independently
+**2. Update `src/components/ui/hero-section-2.tsx`**
+- Add a `backgroundTexture` prop to `HeroSectionProps`
+- On the left content side (`motion.div`), render the texture as an absolute-positioned background image with `object-cover` when provided
 
-**Proposed column split** (pairing similar-length items):
-
-Left column:
-- Aumento do tempo de permanência no ambiente
-- Aumento de ticket médio
-- Direcionamento para reter seu cliente no espaço
-- Bem estar e harmonia
-- Marketing sensorial
-- Influenciar comportamento do consumidor
-
-Right column:
-- Criar elementos agradáveis ao cliente, gerando conexão entre consumidor e marca
-- Fidelização – percepção positiva, vontade de retornar
-- Mudar a percepção de tempo
-- Diferenciar marca
-- Potencializar ponto de venda
-- Melhorar performance da equipe
-
-This way long items (like "Criar elementos agradáveis...") don't force extra whitespace next to short items on the other side.
+**3. Update `src/pages/LandingPage.tsx`**
+- Import `FUNDO.png` from assets
+- Pass it as `backgroundTexture` prop to `HeroSection`
+- Remove `bg-[#b29b7b]` from the className (the texture replaces it)
+- Keep text colors as-is or adjust if contrast changes with the new gray background
 
 ### Technical detail
-- Replace `grid grid-cols-2` with `flex gap-x-10`
-- Each column is a `<ul>` with `flex-1` and `gap-y-2`
-- Stacks to single column on mobile via `flex-col sm:flex-row`
+The left panel gets a `<img>` or `background-image` covering the area behind the text content, similar to how the right panel already handles `backgroundImage`. The text sits on top via `z-10`.
 
