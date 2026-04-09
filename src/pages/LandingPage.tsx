@@ -269,21 +269,47 @@ function PromiseSection() {
             Por que investir em uma projeto com a Éter?
           </h2>
         </div>
-        {/* Bullet points in 2 columns */}
-        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-2 max-w-4xl mx-auto">
-          {benefits.map((b, i) => (
+        {/* Bullet points in 2 independent columns */}
+        {(() => {
+          const leftCol = [
+            "Aumento do tempo de permanência no ambiente",
+            "Aumento de ticket médio",
+            "Direcionamento para reter seu cliente no espaço",
+            "Bem estar e harmonia",
+            "Marketing sensorial",
+            "Influenciar comportamento do consumidor",
+          ];
+          const rightCol = [
+            "Criar elementos agradáveis ao cliente, gerando conexão entre consumidor e marca",
+            "Fidelização – percepção positiva, vontade de retornar",
+            "Mudar a percepção de tempo",
+            "Diferenciar marca",
+            "Potencializar ponto de venda",
+            "Melhorar performance da equipe",
+          ];
+          const renderItem = (b: string, i: number, offset: number) => (
             <li
               key={b}
               className={`flex items-start gap-3 transition-all duration-[600ms] ease-out ${
                 visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"
               }`}
-              style={{ transitionDelay: visible ? `${400 + i * 100}ms` : "0ms" }}
+              style={{ transitionDelay: visible ? `${400 + (offset + i) * 100}ms` : "0ms" }}
             >
               <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0" />
               <span className="font-body font-light text-muted-foreground leading-[1.5]">{b}</span>
             </li>
-          ))}
-        </ul>
+          );
+          return (
+            <div className="flex flex-col sm:flex-row gap-x-10 gap-y-2 max-w-4xl mx-auto">
+              <ul className="flex-1 space-y-2">
+                {leftCol.map((b, i) => renderItem(b, i, 0))}
+              </ul>
+              <ul className="flex-1 space-y-2">
+                {rightCol.map((b, i) => renderItem(b, i, leftCol.length))}
+              </ul>
+            </div>
+          );
+        })()}
       </div>
     </section>
   );
