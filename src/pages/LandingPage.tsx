@@ -204,8 +204,8 @@ function BeliefBreak() {
           decide.
         </p>
         <p className="font-body font-light text-muted-foreground text-base sm:text-lg leading-[1.8]">
-          Iluminação, materiais, proporções, fluxo — tudo comunica.
-          <br />E quando comunica certo, <em className="font-detail text-foreground">vende</em>.
+          Iluminação, materialidade, proporção, fluxo e harmonia – tudo comunica.
+          <br />E quando comunica de forma assertiva, gera <em className="font-detail text-foreground">conexão</em> e <em className="font-detail text-foreground">valor</em>.
         </p>
       </div>
     </RevealSection>
