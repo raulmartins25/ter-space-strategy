@@ -268,7 +268,7 @@ function PromiseSection() {
           </h2>
         </div>
         {/* Bullet points in 2 columns */}
-        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-5 max-w-4xl mx-auto">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-2 max-w-4xl mx-auto">
           {benefits.map((b, i) => (
             <li
               key={b}
@@ -277,8 +277,8 @@ function PromiseSection() {
               }`}
               style={{ transitionDelay: visible ? `${400 + i * 100}ms` : "0ms" }}
             >
-              <span className="mt-2 w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0" />
-              <span className="font-body font-light text-muted-foreground leading-[1.8]">{b}</span>
+              <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0" />
+              <span className="font-body font-light text-muted-foreground leading-[1.5]">{b}</span>
             </li>
           ))}
         </ul>
