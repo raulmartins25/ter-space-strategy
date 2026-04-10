@@ -202,7 +202,7 @@ function BeliefBreak() {
           Não é somente sobre beleza.
         </h2>
         <p className="font-body font-light text-muted-foreground text-base sm:text-lg leading-[1.8] mb-6">
-          Design estratégico vai além de um ambiente bonito. 
+          Design estratégico vai além de um ambiente bonito.
           <br />
           É projetar e cuidar para que cada detalhe possa influenciar a percepção e a decisão do seu cliente.
         </p>
