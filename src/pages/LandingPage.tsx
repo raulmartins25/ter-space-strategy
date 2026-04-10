@@ -207,8 +207,8 @@ function BeliefBreak() {
           <span>É projetar e cuidar para que cada <em className="font-detail">detalhe</em> possa influenciar a <em className="font-detail">percepção</em> e a <em className="font-detail">decisão</em> do seu cliente.</span>
         </p>
         <p className="font-body font-light text-muted-foreground text-base sm:text-lg leading-[1.8]">
-          Iluminação, materialidade, proporção, fluxo e harmonia – tudo comunica.
-          <br />E quando comunica de forma assertiva, gera conexão e valor.
+          Iluminação, materialidade, proporção, fluxo e harmonia – <em className="font-detail">tudo comunica</em>.
+          <br />E quando comunica de forma assertiva, gera <em className="font-detail">conexão</em> e <em className="font-detail">valor</em>.
         </p>
       </div>
     </RevealSection>
