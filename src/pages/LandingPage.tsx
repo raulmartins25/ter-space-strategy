@@ -202,7 +202,9 @@ function BeliefBreak() {
           Não é somente sobre beleza.
         </h2>
         <p className="font-body font-light text-muted-foreground text-base sm:text-lg leading-[1.8] mb-6">
-          <em className="font-detail">Design estratégico</em> vai além de um ambiente bonito. <br /> É projetar e cuidar para que cada <em className="font-detail">detalhe</em> possa influenciar a <em className="font-detail">percepção</em> e a <em className="font-detail">decisão</em> do seu cliente.
+          <span><em className="font-detail">Design estratégico</em> vai além de um ambiente bonito.</span>
+          <br />
+          <span>É projetar e cuidar para que cada <em className="font-detail">detalhe</em> possa influenciar a <em className="font-detail">percepção</em> e a <em className="font-detail">decisão</em> do seu cliente.</span>
         </p>
         <p className="font-body font-light text-muted-foreground text-base sm:text-lg leading-[1.8]">
           Iluminação, materialidade, proporção, fluxo e harmonia – tudo comunica.
