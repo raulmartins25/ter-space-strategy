@@ -1,24 +1,18 @@
 
 
-## Plan: Replace hero background color with uploaded texture image
+## Plan: Add blur gradient between hero columns
 
-The hero section currently uses a solid beige (`bg-[#b29b7b]`) background on the left side. Replace it with the uploaded gray concrete/marble texture image (`FUNDO.png`).
+Add a pseudo-element/overlay at the right edge of the left panel (or left edge of the right panel) that creates a soft blur transition between the texture and the photo.
 
-### Changes
+### Change
 
-**1. Copy uploaded image to project assets**
-- Copy `user-uploads://FUNDO.png` to `src/assets/FUNDO.png`
+**`src/components/ui/hero-section-2.tsx`**
 
-**2. Update `src/components/ui/hero-section-2.tsx`**
-- Add a `backgroundTexture` prop to `HeroSectionProps`
-- On the left content side (`motion.div`), render the texture as an absolute-positioned background image with `object-cover` when provided
+After the right-side `motion.div` opening (line ~152), add an absolutely-positioned gradient overlay on the left edge of the right panel. This div will have a gradient from semi-transparent black/gray to transparent, combined with `backdrop-filter: blur()` to create a soft blurred transition.
 
-**3. Update `src/pages/LandingPage.tsx`**
-- Import `FUNDO.png` from assets
-- Pass it as `backgroundTexture` prop to `HeroSection`
-- Remove `bg-[#b29b7b]` from the className (the texture replaces it)
-- Keep text colors as-is or adjust if contrast changes with the new gray background
+Specifically, add a `div` inside the right-side `motion.div` positioned at `left-0, top-0, bottom-0` with ~40-60px width, using:
+- `backdrop-blur-md` (or `backdrop-blur-sm`) for the blur effect
+- A gradient mask (`mask-image: linear-gradient(to right, black, transparent)`) so the blur fades naturally from left to right
 
-### Technical detail
-The left panel gets a `<img>` or `background-image` covering the area behind the text content, similar to how the right panel already handles `backgroundImage`. The text sits on top via `z-10`.
+This keeps the effect purely visual and doesn't affect layout.
 
