@@ -373,6 +373,7 @@ function Projects() {
     { title: "Consultório Cardiologista", image: clinica4 },
     { title: "Laboratório Salus", image: salus3 },
     { title: "Numer+Pétalla", image: loja4 },
+    { title: "Clínica Vinuz", image: clinicaVinuz },
   ];
 
   return (
