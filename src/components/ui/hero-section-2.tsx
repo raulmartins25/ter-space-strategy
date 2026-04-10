@@ -155,6 +155,13 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
           animate={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)", opacity: 1 }}
           transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.3 }}
         >
+          <div
+            className="absolute left-0 top-0 bottom-0 w-16 z-10 backdrop-blur-md pointer-events-none"
+            style={{
+              maskImage: 'linear-gradient(to right, black, transparent)',
+              WebkitMaskImage: 'linear-gradient(to right, black, transparent)',
+            }}
+          />
           <img
             src={backgroundImage}
             alt=""
