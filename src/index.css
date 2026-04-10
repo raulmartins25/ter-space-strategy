@@ -110,6 +110,7 @@
   .font-detail {
     font-family: 'Lora', serif;
     font-style: italic;
+    font-size: 1.2em;
   }
   .tracking-display {
     letter-spacing: -0.03em;
