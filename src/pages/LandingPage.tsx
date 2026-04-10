@@ -266,7 +266,7 @@ function PromiseSection() {
         >
           <div className="deco-line mx-auto mb-8" />
           <h2 className="font-display tracking-display text-3xl sm:text-4xl text-foreground leading-[1.1]">
-            Por que investir em uma projeto com a Éter?
+            Por que investir em um projeto com a Éter?
           </h2>
         </div>
         {/* Bullet points in 2 independent columns */}
