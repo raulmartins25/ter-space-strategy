@@ -406,39 +406,41 @@ function Projects() {
 /* ─── CTA FINAL (com foto das sócias atrás) ─── */
 function FinalCTA() {
   return (
-    <RevealSection className="relative overflow-hidden pt-0 pb-32 sm:pb-40 px-8 sm:px-12" bg="bg-white">
-      {/* Foto das sócias — atrás do texto */}
-      <div className="flex justify-center mb-0 relative z-0">
-        <div className="max-w-[320px] sm:max-w-[360px] w-full">
-          <img
-            src={sociasImg}
-            alt="Sócias — Éter Arquitetura e Design"
-            className="w-full h-auto"
-          />
+    <RevealSection className="relative overflow-hidden py-20 sm:py-32 px-8 sm:px-12" bg="bg-white">
+      <div className="max-w-5xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+        {/* Foto das sócias — lado esquerdo */}
+        <div className="w-full lg:w-1/2 flex justify-center">
+          <div className="max-w-[360px] sm:max-w-[400px] w-full">
+            <img
+              src={sociasImg}
+              alt="Sócias — Éter Arquitetura e Design"
+              className="w-full h-auto rounded-lg"
+            />
+          </div>
         </div>
-      </div>
-      {/* Texto sobreposto — na frente */}
-      <div className="max-w-3xl mx-auto text-center relative z-10 -mt-24 sm:-mt-32">
-        <div className="deco-line mx-auto mb-10 bg-[#5c4336]/30" />
-        <h2 className="font-display tracking-display text-3xl sm:text-4xl md:text-5xl text-[#5c4336] mb-8 leading-[1.1]">
-          Seu ambiente te reduz ou te traduz?
-        </h2>
-        <p className="font-body font-light text-[#5c4336] text-base sm:text-lg mb-14 leading-[1.8]">
-          Solicite a Análise de Expressão Espacial e descubra o que seu
-          ambiente está comunicando.
-        </p>
-        <a
-          href={WHATSAPP_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          id="cta-final-whatsapp"
-          data-gtm-event="cta_final_click"
-          data-gtm-label="Final CTA WhatsApp"
-          className="gtm-cta gtm-cta-final inline-flex items-center gap-3 bg-[#5c4939] text-[#e5eaed] font-body font-medium text-sm px-10 py-4 rounded-full hover:opacity-90 transition-all duration-500 hover:-translate-y-0.5 hover:shadow-2xl"
-        >
-          <MessageCircle className="w-5 h-5" />
-          Quero minha análise no WhatsApp
-        </a>
+        {/* Texto e CTA — lado direito */}
+        <div className="w-full lg:w-1/2 text-center lg:text-left">
+          <div className="deco-line mb-10 bg-[#5c4336]/30 mx-auto lg:mx-0" />
+          <h2 className="font-display tracking-display text-3xl sm:text-4xl md:text-5xl text-[#5c4336] mb-8 leading-[1.1]">
+            Seu ambiente te reduz ou te traduz?
+          </h2>
+          <p className="font-body font-light text-[#5c4336] text-base sm:text-lg mb-14 leading-[1.8]">
+            Solicite a Análise de Expressão Espacial e descubra o que seu
+            ambiente está comunicando.
+          </p>
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            id="cta-final-whatsapp"
+            data-gtm-event="cta_final_click"
+            data-gtm-label="Final CTA WhatsApp"
+            className="gtm-cta gtm-cta-final inline-flex items-center gap-3 bg-[#5c4939] text-[#e5eaed] font-body font-medium text-sm px-10 py-4 rounded-full hover:opacity-90 transition-all duration-500 hover:-translate-y-0.5 hover:shadow-2xl"
+          >
+            <MessageCircle className="w-5 h-5" />
+            Quero minha análise no WhatsApp
+          </a>
+        </div>
       </div>
     </RevealSection>
   );
