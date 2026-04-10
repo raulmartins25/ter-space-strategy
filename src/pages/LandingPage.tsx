@@ -367,7 +367,7 @@ function Process() {
 function Projects() {
   const { ref, visible } = useScrollReveal();
   const gridItems = [
-    { title: "Consultório Médico", image: clinica1 },
+    { title: "Consultório Endocrinologista", image: clinica1 },
     { title: "Consultório Médico", image: clinica2 },
     { title: "Sala de Atendimento", image: clinica4 },
     { title: "Laboratório Salus", image: salus3 },
