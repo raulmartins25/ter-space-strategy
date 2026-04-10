@@ -19,7 +19,7 @@ import clinica4 from "@/assets/clinica-4.jpg";
 import loja2 from "@/assets/loja-2.jpg";
 import loja3 from "@/assets/loja-3.jpg";
 import loja4 from "@/assets/loja-4.jpg";
-import sociasImg from "@/assets/socias.png";
+import sociasImg from "@/assets/socias.jpg";
 
 const WHATSAPP_URL =
   "https://wa.me/556299542888?text=Quero%20uma%20an%C3%A1lise%20do%20meu%20escrit%C3%B3rio";
@@ -414,12 +414,6 @@ function FinalCTA() {
             src={sociasImg}
             alt="Sócias — Éter Arquitetura e Design"
             className="w-full h-auto"
-            style={{
-              maskImage: "linear-gradient(to bottom, transparent 0%, black 18%, black 60%, transparent 100%), linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
-              WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 18%, black 60%, transparent 100%), linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
-              maskComposite: "intersect",
-              WebkitMaskComposite: "destination-in",
-            }}
           />
         </div>
       </div>

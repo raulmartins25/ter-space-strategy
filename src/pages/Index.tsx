@@ -7,7 +7,7 @@ import Navbar from "@/components/Navbar";
 
 import logoEterFooter from "@/assets/logo-eter-footer.png";
 import heroBg from "@/assets/hero-bg-site.jpg";
-import sociasImg from "@/assets/socias.png";
+import sociasImg from "@/assets/socias.jpg";
 import sociasAboutImg from "@/assets/socias-about.jpeg";
 import antesObra from "@/assets/antes-obra.jpg";
 import depoisObra from "@/assets/depois-obra.jpg";
