@@ -278,6 +278,7 @@ function PromiseSection() {
             "Bem estar e harmonia",
             "Marketing sensorial",
             "Influenciar comportamento do consumidor",
+            "Melhorar performance da equipe",
           ];
           const rightCol = [
             "Criar elementos agradáveis ao cliente, gerando conexão entre consumidor e marca",
@@ -285,7 +286,6 @@ function PromiseSection() {
             "Mudar a percepção de tempo",
             "Diferenciar marca",
             "Potencializar ponto de venda",
-            "Melhorar performance da equipe",
           ];
           const renderItem = (b: string, i: number, offset: number) => (
             <li
