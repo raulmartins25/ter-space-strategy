@@ -207,7 +207,7 @@ function BeliefBreak() {
         </p>
         <p className="font-body font-light text-muted-foreground text-base sm:text-lg leading-[1.8]">
           Iluminação, materialidade, proporção, fluxo e harmonia – tudo comunica.
-          <br />E quando comunica de forma assertiva, gera <em className="font-detail text-foreground">conexão</em> e <em className="font-detail text-foreground">valor</em>.
+          <br />E quando comunica de forma assertiva, gera conexão e valor.
         </p>
       </div>
     </RevealSection>
