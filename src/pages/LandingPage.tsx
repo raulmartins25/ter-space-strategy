@@ -97,7 +97,7 @@ function StaggerChildren({
 function Hero() {
   return (
     <HeroSection
-      className="text-[#2a2a2a] [&_h1]:text-[#2a2a2a] [&_p]:text-[#2a2a2a]/70 [&_span]:text-[#2a2a2a]/60"
+      className=""
       logo={{
         url: logoEter,
         alt: "Éter Arquitetura e Design",
