@@ -1,84 +1,56 @@
 
 
-# Redesign da `/` no estilo Studio Arthur Casas — mantendo identidade Éter
+# Trocar seção de Projetos da `/` pelo grid da `/lp`
 
-Vamos transformar a página `/` em um site **editorial minimalista** inspirado na estrutura/diagramação do arthurcasas.com, mas **preservando 100% da identidade visual da Éter**: paleta de cores atual, tipografia (font-display, font-body, font-detail Lora itálico), logo, e tom de voz.
+## O que muda
 
-## O que muda (estrutura/layout — Arthur Casas)
+Na página `/`, vou substituir as duas seções atuais (`FeaturedProjects` editorial alternado + `PortfolioMosaic` em 2 colunas) por **uma única seção `Projects`** usando o mesmo componente `PortfolioGrid` que está em `/lp` — grid de 3 colunas, cantos arredondados, hover com overlay escuro mostrando o título, e lightbox com navegação ao clicar.
 
-- **Sidebar fixa à esquerda** (estilo arthurcasas.com): logo Éter no topo, menu vertical discreto embaixo (PROJETOS · SOBRE · CONTATO). Em mobile vira hamburger.
-- **Hero split**: metade esquerda off-white com tipografia Éter ("ÉTER ARQUITETURA E DESIGN" em font-display tracking amplo), metade direita uma foto grande full-height.
-- **Grid editorial de projetos em destaque**: 3 imagens grandes alternadas (esquerda/direita), cada uma com label de categoria pequena + título do projeto + cidade — sem cards, sem sombras, sem bordas arredondadas.
-- **Teasers narrativos**: cada bloco (Projetos, Sobre, Contato) segue o padrão Arthur Casas — uma frase curta + link "Ver mais →".
-- **Remoção de elementos pesados**: cards de Serviços/Método com ícones, cards de Depoimentos com aspas, image-comparison antes/depois, botões pílula grandes espalhados, gradientes, hovers de scale/translate agressivos.
-
-## O que se mantém (identidade Éter)
-
-- **Cores**: paleta atual (`bg-background`, `text-foreground`, `bg-secondary`, `accent`, `#5c4336`, `#f0e5db`) — nada vira off-white Arthur Casas
-- **Tipografia**: `font-display` (títulos), `font-body` (corpo), `font-detail` (Lora itálico para palavras de ênfase) — mantidas exatamente como hoje
-- **Logo Éter** (header e footer)
-- **Tom de voz**: "arquitetura é estratégia", textos sobre Éter, depoimentos
-- **CTAs WhatsApp** com link e tracking GTM, mas em estilo mais discreto (link com underline + ícone pequeno, em vez de botão pílula gigante)
-- **WhatsApp flutuante** — mantido
-- **Animações de fade-in** ao scroll (apenas opacity, sem translate agressivo)
-
-## Nova estrutura da página
+## Layout final da seção
 
 ```text
-┌─ Sidebar fixa esquerda (220px) ────────────────────────┐
-│ [logo Éter]                                            │
-│                                                        │
-│ PROJETOS                                               │
-│ SOBRE                                                  │
-│ MÉTODO                                                 │
-│ CONTATO                                                │
-│ — — —                                                  │
-│ INSTAGRAM                                              │
-│ WHATSAPP                                               │
-└────────────────────────────────────────────────────────┘
-   │ Conteúdo (margin-left: 220px desktop)
-   │
-   1. HERO SPLIT          → texto Éter à esquerda + foto full-height à direita
-   2. PROJETOS DESTAQUE   → 3 projetos em grid editorial alternado
-                            (Clínica · Loja · Laboratório)
-   3. VER TODOS           → frase curta + link "Ver todos os projetos →"
-   4. SOBRE TEASER        → foto sócias grande + parágrafo curto + "Leia mais →"
-   5. MÉTODO              → 3 passos em texto puro tipográfico (sem ícones, sem círculos)
-   6. DEPOIMENTO ÚNICO    → uma citação grande, tipográfica, centralizada
-   7. CONTATO MINIMAL     → telefone, instagram, whatsapp em linha tipográfica
-   8. FOOTER ENXUTO       → logo + copyright em linha única
+                    PORTFÓLIO  (label pequena tracking amplo)
+
+           Projetos que comunicam valor   (título font-display)
+
+
+   ┌──────────┐  ┌──────────┐  ┌──────────┐
+   │ clinica1 │  │ clinica2 │  │ clinica4 │
+   └──────────┘  └──────────┘  └──────────┘
+   ┌──────────┐  ┌──────────┐  ┌──────────┐
+   │  salus1  │  │  loja2   │  │  loja4   │
+   └──────────┘  └──────────┘  └──────────┘
+
+                   Ver todos →   (link discreto)
 ```
 
-## Mudanças por arquivo
+## Itens do grid
 
-**`src/components/Navbar.tsx`** → reescrever como **sidebar fixa lateral** usando shadcn `Sidebar` (`collapsible="offcanvas"` mobile, sempre visível desktop):
-- Logo Éter no topo
-- Menu vertical: links âncora para `#projetos`, `#sobre`, `#metodo`, `#contato`
-- Tipografia: `font-body` text-[11px] tracking-[0.4em] uppercase (já usada no projeto)
-- Cores: `bg-background`, `text-foreground`, hover `text-accent`
-- Mobile: SidebarTrigger no canto superior esquerdo
+Reaproveita os assets já importados em `Index.tsx`:
+- Consultório Endocrinologista (`clinica1`)
+- Consultório Angiologista (`clinica2`)
+- Consultório Cardiologista (`clinica4`)
+- Laboratório Salus (`salus1`)
+- Numer + Pétalla (`loja2`)
+- Loja Numer+Pétalla (`loja4`)
 
-**`src/pages/Index.tsx`** → reescrever as seções:
-- `Hero` → split layout (50/50 desktop, stack mobile), texto à esquerda em `font-display`
-- `FeaturedProjects` (nova) → 3 blocos editoriais alternados, full-bleed à direita do conteúdo
-- `AllProjectsTeaser` (nova) → substitui o `PortfolioCarousel`
-- `About` → simplificar para foto grande + 1 parágrafo + link "Leia mais →" (remover stats card)
-- `Method` → texto tipográfico puro: número grande discreto + título + descrição em coluna, sem círculos, sem ícones
-- `Testimonials` → uma única citação grande em vez de 3 cards
-- Remover: `Services`, `Differentials` (image comparison), `Portfolio` (carousel)
-- `ContactCTA` → minimalismo tipográfico: H2 grande + linha com Phone · Instagram · WhatsApp em texto + link
-- `Footer` → uma linha só
+## Estilo (mantém minimalismo Éter)
 
-**Layout wrapper** → envelopar tudo em `SidebarProvider` + `<main className="md:ml-[220px]">`
+- Fundo `bg-background` (off-white da paleta Éter)
+- Label "Portfólio" em `font-body text-[10px] tracking-[0.5em] uppercase`
+- Título "Projetos que comunicam valor" em `font-display tracking-display text-3xl/4xl/5xl`
+- Grid `PortfolioGrid` com aspect 4:3, cantos arredondados, hover overlay com título
+- Link "Ver todos →" no final em `link-underline` discreto
+- Padding generoso: `py-28 sm:py-40 px-6 sm:px-12`
 
-## Detalhes técnicos
+## Mudanças técnicas
 
-- Apenas `Index.tsx` e `Navbar.tsx` editados
-- `LandingPage.tsx` (`/lp`) **não é tocada**
-- Reaproveita todos os assets já importados (clinica1, loja2, salus1, sociasAboutImg, heroBg)
-- Nenhuma dependência nova; usa shadcn `Sidebar` que já existe em `components/ui/sidebar.tsx`
-- Mantém `framer-motion` apenas para fade `opacity 0→1`
-- Mantém IDs `data-gtm-*` nos CTAs WhatsApp restantes
-- Acessibilidade preservada (alt, aria-label, semantic headings)
-- Mobile: sidebar vira off-canvas com hamburger; hero empilha texto+imagem
+**Único arquivo editado: `src/pages/Index.tsx`**
+- Adicionar import do `PortfolioGrid`
+- Remover funções `FeaturedProjects` e `PortfolioMosaic`
+- Criar nova função `Projects` (id=`projetos`) com label + título + `<PortfolioGrid items={...} />` + link
+- Substituir no JSX final: `<FeaturedProjects />` e `<PortfolioMosaic />` por `<Projects />`
+- Remover imports não usados (`heroBg` continua, mas `loja2/loja4/salus1/salus2/clinica1/clinica2/clinica4` consolidam para os 6 do grid)
+
+Nada mais é tocado — sidebar, hero, sobre, método, depoimento, contato e footer permanecem como estão.
 
