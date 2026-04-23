@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import { PortfolioGrid } from "@/components/ui/portfolio-grid";
 
 import logoEterFooter from "@/assets/logo-eter-footer.png";
+import logoEterNovo from "@/assets/logo-eter-novo.png";
 import heroBg from "@/assets/hero-bg-site.jpg";
 import anaImg from "@/assets/ana-emilia.png";
 import fernandaImg from "@/assets/fernanda.png";
@@ -467,7 +468,7 @@ function FloatingWhatsApp() {
 export default function Index() {
   return (
     <div className="font-body bg-background text-foreground overflow-x-hidden">
-      <Navbar />
+      <Navbar logoSrc={logoEterNovo} />
       <main className="md:ml-[220px] pt-16 md:pt-0">
         <Hero />
         <Projects />
