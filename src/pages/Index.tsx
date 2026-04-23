@@ -385,7 +385,7 @@ function Quote() {
             Avaliações
           </p>
           <h2 className="font-display tracking-display text-3xl sm:text-4xl md:text-5xl text-foreground leading-[1.1] mb-8">
-            A Éter sob o <em className="font-detail">olhar</em> de quem <em className="font-detail">confia</em>:
+            A Éter sob o <em className="font-detail">olhar</em> de quem confia:
           </h2>
           <div className="inline-flex items-center gap-3 text-foreground">
             <GoogleLogo className="w-5 h-5" />
