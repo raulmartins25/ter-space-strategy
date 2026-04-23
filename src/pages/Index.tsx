@@ -98,16 +98,7 @@ function Hero() {
           transition={{ duration: 1, delay: 0.9 }}
           className="flex flex-col gap-4"
         >
-          <a
-            href="#projetos"
-            onClick={(e) => {
-              e.preventDefault();
-              document.getElementById("projetos")?.scrollIntoView({ behavior: "smooth" });
-            }}
-            className="link-underline font-body text-[11px] tracking-[0.4em] uppercase text-foreground inline-flex items-center gap-3 w-fit"
-          >
-            Ver projetos <ArrowRight className="w-4 h-4" />
-          </a>
+          {/* Botões removidos conforme solicitação */}
         </motion.div>
       </div>
 
@@ -167,16 +158,7 @@ function Projects() {
         <PortfolioGrid items={items} dimmed />
       </div>
 
-      <div className="mt-16 sm:mt-20 flex justify-center">
-        <a
-          href={WHATSAPP_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="link-underline font-body text-[11px] tracking-[0.4em] uppercase text-foreground inline-flex items-center gap-3"
-        >
-          Ver todos <ArrowRight className="w-4 h-4" />
-        </a>
-      </div>
+      {/* Botão "Ver todos" removido conforme solicitação */}
     </section>
   );
 }
