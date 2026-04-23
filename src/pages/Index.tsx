@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, MessageCircle, Instagram, Phone } from "lucide-react";
 import Navbar from "@/components/Navbar";
+import { PortfolioGrid } from "@/components/ui/portfolio-grid";
 
 import logoEterFooter from "@/assets/logo-eter-footer.png";
 import heroBg from "@/assets/hero-bg-site.jpg";
@@ -108,88 +109,49 @@ function Hero() {
 }
 
 /* ═══════════════════════════════════════════
-   PROJETOS EM DESTAQUE — Grid editorial alternado
+   PROJETOS — Grid editorial (modelo /lp)
    ═══════════════════════════════════════════ */
-function FeaturedProjects() {
-  const projects = [
-    {
-      img: clinica1,
-      category: "Clínicas",
-      title: "Consultório Endocrinologia",
-      city: "Goiânia, Brasil",
-    },
-    {
-      img: loja2,
-      category: "Comercial",
-      title: "Numer + Pétalla",
-      city: "Goiânia, Brasil",
-    },
-    {
-      img: salus1,
-      category: "Laboratórios",
-      title: "Laboratório Salus",
-      city: "Goiânia, Brasil",
-    },
+function Projects() {
+  const items = [
+    { title: "Consultório Endocrinologia", image: clinica1 },
+    { title: "Consultório Angiologia", image: clinica2 },
+    { title: "Consultório Cardiologia", image: clinica4 },
+    { title: "Laboratório Salus", image: salus1 },
+    { title: "Numer + Pétalla", image: loja2 },
+    { title: "Loja Numer + Pétalla", image: loja4 },
   ];
 
   const { ref, visible } = useReveal();
 
   return (
-    <section id="projetos" ref={ref} className="bg-background">
-      <div className="px-6 sm:px-12 pt-24 sm:pt-32 pb-16">
-        <p className="font-body text-[10px] tracking-[0.5em] uppercase text-muted-foreground">
-          Projetos
+    <section
+      id="projetos"
+      ref={ref}
+      className="bg-background py-28 sm:py-40 px-6 sm:px-12"
+    >
+      <div
+        className={`max-w-3xl mb-16 sm:mb-20 transition-opacity duration-[1100ms] ${
+          visible ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        <p className="font-body text-[10px] tracking-[0.5em] uppercase text-muted-foreground mb-6">
+          Portfólio
         </p>
+        <h2 className="font-display tracking-display text-3xl sm:text-4xl md:text-5xl text-foreground leading-[1.1]">
+          Projetos que comunicam <em className="font-detail">valor</em>.
+        </h2>
       </div>
 
-      <div className="flex flex-col">
-        {projects.map((p, i) => {
-          const reverse = i % 2 === 1;
-          return (
-            <article
-              key={p.title}
-              className={`grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 px-6 sm:px-12 py-10 md:py-20 transition-opacity duration-[1200ms] ease-out ${
-                visible ? "opacity-100" : "opacity-0"
-              }`}
-              style={{ transitionDelay: visible ? `${i * 200}ms` : "0ms" }}
-            >
-              <div
-                className={`md:col-span-8 ${reverse ? "md:order-2" : ""} img-hover-wrap`}
-              >
-                <img
-                  src={p.img}
-                  alt={p.title}
-                  className="w-full h-[55vh] md:h-[80vh] object-cover"
-                  loading="lazy"
-                />
-              </div>
-              <div
-                className={`md:col-span-4 flex flex-col justify-end pb-4 ${
-                  reverse ? "md:order-1 md:items-end md:text-right" : ""
-                }`}
-              >
-                <p className="font-body text-[10px] tracking-[0.4em] uppercase text-muted-foreground mb-3">
-                  {p.category}
-                </p>
-                <h3 className="font-display tracking-display text-2xl sm:text-3xl md:text-4xl text-foreground leading-[1.1] mb-3">
-                  {p.title}
-                </h3>
-                <p className="font-body text-[12px] tracking-[0.15em] uppercase text-muted-foreground">
-                  {p.city}
-                </p>
-              </div>
-            </article>
-          );
-        })}
+      <div
+        className={`transition-opacity duration-[1200ms] ${
+          visible ? "opacity-100" : "opacity-0"
+        }`}
+        style={{ transitionDelay: visible ? "200ms" : "0ms" }}
+      >
+        <PortfolioGrid items={items} />
       </div>
 
-      {/* Tagline + ver todos */}
-      <div className="px-6 sm:px-12 py-24 sm:py-32 max-w-3xl">
-        <p className="font-display tracking-display text-xl sm:text-2xl md:text-3xl text-foreground leading-[1.4] mb-8">
-          De clínicas a espaços corporativos, uma seleção de projetos que
-          traduzem <em className="font-detail">marca</em>, comportamento e
-          permanência.
-        </p>
+      <div className="mt-16 sm:mt-20 flex justify-center">
         <a
           href={WHATSAPP_URL}
           target="_blank"
@@ -198,54 +160,6 @@ function FeaturedProjects() {
         >
           Ver todos <ArrowRight className="w-4 h-4" />
         </a>
-      </div>
-    </section>
-  );
-}
-
-/* ═══════════════════════════════════════════
-   PORTFOLIO ADICIONAL — Mosaico
-   ═══════════════════════════════════════════ */
-function PortfolioMosaic() {
-  const items = [
-    { img: clinica2, title: "Consultório Angiologia", category: "Clínicas" },
-    { img: clinica4, title: "Consultório Cardiologia", category: "Clínicas" },
-    { img: loja4, title: "Loja Numer+Pétalla", category: "Comercial" },
-    { img: salus2, title: "Laboratório Salus", category: "Laboratórios" },
-  ];
-  const { ref, visible } = useReveal();
-  return (
-    <section ref={ref} className="bg-secondary py-24 sm:py-32 px-6 sm:px-12">
-      <div className="mb-16">
-        <p className="font-body text-[10px] tracking-[0.5em] uppercase text-muted-foreground">
-          Portfólio
-        </p>
-      </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-12">
-        {items.map((it, i) => (
-          <div
-            key={it.title}
-            className={`transition-opacity duration-[1000ms] ease-out ${
-              visible ? "opacity-100" : "opacity-0"
-            }`}
-            style={{ transitionDelay: visible ? `${i * 150}ms` : "0ms" }}
-          >
-            <div className="img-hover-wrap mb-4">
-              <img
-                src={it.img}
-                alt={it.title}
-                className="w-full h-[45vh] sm:h-[55vh] object-cover"
-                loading="lazy"
-              />
-            </div>
-            <p className="font-body text-[10px] tracking-[0.4em] uppercase text-muted-foreground mb-1">
-              {it.category}
-            </p>
-            <h4 className="font-display tracking-display text-xl text-foreground">
-              {it.title}
-            </h4>
-          </div>
-        ))}
       </div>
     </section>
   );
@@ -511,8 +425,7 @@ export default function Index() {
       <Navbar />
       <main className="md:ml-[220px] pt-16 md:pt-0">
         <Hero />
-        <FeaturedProjects />
-        <PortfolioMosaic />
+        <Projects />
         <About />
         <Method />
         <Quote />
