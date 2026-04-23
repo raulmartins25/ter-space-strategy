@@ -66,11 +66,10 @@ function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2, delay: 0.4 }}
-          className="my-12 md:my-0"
+          className="my-12 md:my-0 md:mt-12"
         >
-          <h1 className="font-display tracking-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-foreground leading-[1.05]">
-            Arquitetura<br />
-            é <em className="font-detail">estratégia</em>.
+          <h1 className="font-display tracking-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-foreground leading-[1.05] whitespace-nowrap">
+            Arquitetura é <em className="font-detail">estratégia</em>.
           </h1>
           <p className="mt-8 font-body font-light text-muted-foreground text-base sm:text-lg max-w-lg leading-[1.8]">
             Na Éter Arquitetura e Design, desenvolvemos projetos de arquitetura e
