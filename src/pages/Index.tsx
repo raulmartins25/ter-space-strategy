@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, MessageCircle, Instagram, Phone } from "lucide-react";
+import { ArrowRight, MessageCircle, Instagram, Phone, Target, Lightbulb, Ruler } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { PortfolioGrid } from "@/components/ui/portfolio-grid";
 
@@ -277,51 +277,63 @@ function Method() {
   const { ref, visible } = useReveal();
   const steps = [
     {
+      icon: Target,
       num: "01",
-      title: "Diagnóstico estratégico",
-      desc: "Analisamos seu espaço, seu público e seus objetivos para entender o que precisa mudar.",
+      title: "Diagnóstico Estratégico",
+      desc: "Analisamos seu espaço, seu público e as diretrizes centrais do seu negócio.",
     },
     {
+      icon: Lightbulb,
       num: "02",
-      title: "Projeto com intenção",
-      desc: "Cada elemento é projetado para comunicar valor, reforçar sua marca e gerar resultado mensurável.",
+      title: "Projetamos atmosferas",
+      desc: "Transformamos estética em estratégia e experiências que conectam, envolvem e convertem.",
     },
     {
+      icon: Ruler,
       num: "03",
-      title: "Execução orientada",
-      desc: "Acompanhamento completo da obra para garantir que o espaço entregue o que foi prometido.",
+      title: "Execução Orientada",
+      desc: "Acompanhamento próximo para garantir que o espaço entregue o que promete.",
     },
   ];
   return (
     <section id="metodo" ref={ref} className="bg-secondary py-28 sm:py-40 px-6 sm:px-12">
-      <div className="mb-16">
-        <p className="font-body text-[10px] tracking-[0.5em] uppercase text-muted-foreground mb-6">
-          Método
-        </p>
-        <h2 className="font-display tracking-display text-3xl sm:text-4xl md:text-5xl text-foreground leading-[1.1] max-w-2xl">
-          Como <em className="font-detail">projetamos</em>.
-        </h2>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
-        {steps.map((s, i) => (
-          <div
-            key={s.num}
-            className={`border-t border-border pt-8 transition-opacity duration-[900ms] ${
-              visible ? "opacity-100" : "opacity-0"
-            }`}
-            style={{ transitionDelay: visible ? `${i * 200}ms` : "0ms" }}
-          >
-            <p className="font-body text-[10px] tracking-[0.4em] uppercase text-muted-foreground mb-6">
-              {s.num}
-            </p>
-            <h3 className="font-display tracking-display text-2xl text-foreground mb-4 leading-tight">
-              {s.title}
-            </h3>
-            <p className="font-body font-light text-[14px] text-muted-foreground leading-[1.8]">
-              {s.desc}
-            </p>
-          </div>
-        ))}
+      <div className="max-w-5xl mx-auto">
+        <div
+          className={`text-center mb-20 transition-all duration-[900ms] ${
+            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+          }`}
+        >
+          <p className="font-body text-[10px] tracking-[0.5em] uppercase text-muted-foreground mb-6">
+            Método
+          </p>
+          <h2 className="font-display tracking-display text-3xl sm:text-4xl md:text-5xl text-foreground leading-[1.1]">
+            Como <em className="font-detail">projetamos</em>.
+          </h2>
+        </div>
+        <div className="grid md:grid-cols-3 gap-12 md:gap-8 timeline-line relative">
+          {steps.map((s, i) => (
+            <div
+              key={s.num}
+              className={`text-center group relative z-10 transition-opacity duration-[900ms] ${
+                visible ? "opacity-100" : "opacity-0"
+              }`}
+              style={{ transitionDelay: visible ? `${200 + i * 180}ms` : "0ms" }}
+            >
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full border border-border bg-background mb-8 group-hover:border-accent transition-all duration-500">
+                <s.icon className="w-6 h-6 text-foreground" />
+              </div>
+              <div className="absolute top-12 left-1/2 -translate-x-1/2 font-display text-[120px] leading-none text-foreground/[0.04] select-none pointer-events-none">
+                {s.num}
+              </div>
+              <h3 className="font-display tracking-display text-2xl text-foreground mb-4 relative">
+                {s.title}
+              </h3>
+              <p className="font-body font-light text-[15px] text-muted-foreground leading-[1.8] relative max-w-[280px] mx-auto">
+                {s.desc}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
