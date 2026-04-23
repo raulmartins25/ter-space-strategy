@@ -86,7 +86,7 @@ function Hero() {
             <br />
             <br />
             Do conceito à especificação de mobiliário e iluminação, entregamos
-            projetos completos, o intertício entre beleza e estratégia.
+            projetos completos: o interstício entre beleza e estratégia.
           </p>
         </motion.div>
 
