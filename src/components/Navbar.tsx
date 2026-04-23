@@ -17,7 +17,9 @@ const NAV_LINKS = [
 const WHATSAPP_URL =
   "https://wa.me/556299542888?text=Quero%20uma%20an%C3%A1lise%20do%20meu%20escrit%C3%B3rio";
 
-export default function Navbar() {
+export default function Navbar({ logoSrc }: NavbarProps = {}) {
+  const logoEterSite = logoSrc ?? logoEterSiteDefault;
+  const isCustom = !!logoSrc;
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
