@@ -374,7 +374,7 @@ const GoogleLogo = ({ className = "" }: { className?: string }) => (
 function Quote() {
   const { ref, visible } = useReveal();
   return (
-    <section ref={ref} className="bg-secondary py-28 sm:py-40 px-6 sm:px-12">
+    <section ref={ref} className="bg-background py-28 sm:py-40 px-6 sm:px-12">
       <div className="max-w-6xl mx-auto">
         <div
           className={`text-center mb-16 sm:mb-20 transition-opacity duration-[1100ms] ${
@@ -406,7 +406,7 @@ function Quote() {
           {googleReviews.map((r, i) => (
             <article
               key={r.author}
-              className={`bg-background border border-border p-7 flex flex-col transition-all duration-[1100ms] hover:shadow-md ${
+              className={`bg-background border border-border/70 shadow-[0_2px_12px_-4px_hsl(var(--foreground)/0.08)] p-7 flex flex-col transition-all duration-[1100ms] hover:shadow-[0_8px_24px_-8px_hsl(var(--foreground)/0.15)] ${
                 visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               }`}
               style={{ transitionDelay: visible ? `${i * 150}ms` : "0ms" }}
