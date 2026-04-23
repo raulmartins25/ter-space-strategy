@@ -102,8 +102,7 @@
 
 @layer utilities {
   .font-display {
-    font-family: 'Lora', serif;
-    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
   }
   .font-body {
     font-family: 'Poppins', sans-serif;
@@ -113,36 +112,8 @@
     font-style: italic;
     font-size: 1.1em;
   }
-  .font-serif-display {
-    font-family: 'Lora', serif;
-    font-weight: 400;
-    letter-spacing: -0.02em;
-  }
   .tracking-display {
-    letter-spacing: -0.02em;
-  }
-  .label-caps {
-    font-family: 'Poppins', sans-serif;
-    font-size: 10px;
-    letter-spacing: 0.32em;
-    text-transform: uppercase;
-    font-weight: 400;
-  }
-  .editorial-link {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: 'Poppins', sans-serif;
-    font-size: 11px;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    padding-bottom: 4px;
-    border-bottom: 1px solid currentColor;
-    transition: gap 0.4s ease;
-  }
-  .editorial-link:hover {
-    gap: 0.9rem;
+    letter-spacing: -0.03em;
   }
   .glass {
     backdrop-filter: blur(10px);

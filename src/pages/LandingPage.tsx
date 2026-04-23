@@ -1,17 +1,26 @@
 import { useEffect, useRef, useState } from "react";
-import { MessageCircle, ArrowRight } from "lucide-react";
-import { SiteHeader } from "@/components/ui/site-header";
-import logoEterFooter from "@/assets/logo-eter-footer.png";
+import { ImageComparison, ImageComparisonImage, ImageComparisonSlider } from "@/components/ui/image-comparison";
+import { MessageCircle, ArrowRight, Target, Lightbulb, Ruler } from "lucide-react";
+import { PortfolioGrid } from "@/components/ui/portfolio-grid";
+import { HeroSection } from "@/components/ui/hero-section-2";
+import logoEter from "@/assets/logo-eter.png";
 import heroBg from "@/assets/hero-bg.jpg";
+import fundoBg from "@/assets/FUNDO.png";
+import logoEterFooter from "@/assets/logo-eter-footer.png";
+import antesImg from "@/assets/antes.jpg";
+import depoisImg from "@/assets/depois.jpg";
+import antesObra from "@/assets/antes-obra.jpg";
+import depoisObra from "@/assets/depois-obra.jpg";
 import clinica1 from "@/assets/clinica-1.jpg";
 import clinica2 from "@/assets/clinica-2.jpg";
+
 import clinica4 from "@/assets/clinica-4.jpg";
+
 import salus3 from "@/assets/salus-3.jpg";
 import salus4 from "@/assets/salus-4.jpg";
 import loja4 from "@/assets/loja-4.jpg";
 import clinicaVinuz from "@/assets/clinica-vinuz.jpg";
 import sociasImg from "@/assets/socias.jpg";
-import depoisObra from "@/assets/depois-obra.jpg";
 
 const WHATSAPP_URL =
   "https://wa.me/556299542888?text=Quero%20uma%20an%C3%A1lise%20do%20meu%20escrit%C3%B3rio";
@@ -23,13 +32,8 @@ function useScrollReveal() {
     const el = ref.current;
     if (!el) return;
     const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          obs.disconnect();
-        }
-      },
-      { threshold: 0.12 }
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      { threshold: 0.1 }
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -37,350 +41,424 @@ function useScrollReveal() {
   return { ref, visible };
 }
 
-function Reveal({
+function RevealSection({
   children,
   className = "",
-  delay = 0,
+  bg = "",
 }: {
   children: React.ReactNode;
   className?: string;
-  delay?: number;
+  bg?: string;
 }) {
   const { ref, visible } = useScrollReveal();
   return (
-    <div
-      ref={ref}
-      className={`${className} transition-all duration-[1100ms] ease-out`}
-      style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(28px)",
-        transitionDelay: visible ? `${delay}ms` : "0ms",
+    <section ref={ref} className={`${bg} ${className}`}>
+      <div
+        className={`transition-all ease-out duration-[900ms] ${
+          visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+        }`}
+      >
+        {children}
+      </div>
+    </section>
+  );
+}
+
+function StaggerChildren({
+  children,
+  visible,
+  baseDelay = 0,
+  increment = 120,
+}: {
+  children: React.ReactNode[];
+  visible: boolean;
+  baseDelay?: number;
+  increment?: number;
+}) {
+  return (
+    <>
+      {children.map((child, i) => (
+        <div
+          key={i}
+          className={`transition-all duration-[700ms] ease-out ${
+            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+          style={{
+            transitionDelay: visible ? `${baseDelay + i * increment}ms` : "0ms",
+          }}
+        >
+          {child}
+        </div>
+      ))}
+    </>
+  );
+}
+
+/* ─── HERO — Split Layout ─── */
+function Hero() {
+  return (
+    <HeroSection
+      className=""
+      logo={{
+        url: logoEter,
+        alt: "Éter Arquitetura e Design",
       }}
-    >
-      {children}
+      slogan=""
+      title={
+        <>
+          Seu espaço está fortalecendo
+          <br />
+          <em className="font-detail">conexões</em> ou criando
+          <br />
+          barreiras silenciosas com seus clientes?
+        </>
+      }
+      subtitle="Projetamos espaços corporativos que aumentam percepção de valor, confiança e fechamento de contratos."
+      callToAction={{
+        text: "Falar no WhatsApp",
+        href: WHATSAPP_URL,
+        icon: <MessageCircle className="w-5 h-5" />,
+      }}
+      backgroundImage={heroBg}
+      backgroundTexture={fundoBg}
+      contactInfo={{
+        website: "",
+        phone: "",
+        address: "",
+      }}
+    />
+  );
+}
+
+/* ─── PROBLEMA — Pain Points ─── */
+function ProblemBlock() {
+  const { ref, visible } = useScrollReveal();
+  const pains = [
+    { title: "Não comunica autoridade", desc: "O ambiente falha em comunicar a solidez e a competência que você realmente possui." },
+    { title: "Espaço genérico", desc: "Sem personalidade, a falta de identidade torna seu ambiente  indistinguível de qualquer outro do mesmo segmento." },
+    { title: "A percepção de valor", desc: "O próprio ambiente reduz a relevância do seu serviço, conduzindo o cliente a uma postura imediata de desvalorização." },
+    { title: "A conversão não acontece", desc: "Negócios se perdem de forma silenciosa, enquanto o espaço inviabiliza a tomada de decisão." },
+  ];
+
+  return (
+    <section ref={ref} className="py-28 sm:py-36 px-8 sm:px-12">
+      <div className="max-w-3xl mx-auto">
+        <div
+          className={`transition-all duration-[900ms] ease-out ${
+            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+        >
+          <h2 className="font-display tracking-display text-3xl sm:text-4xl md:text-5xl text-center text-foreground mb-20 max-w-3xl mx-auto leading-[1.1]">
+            A falta de coerência e conexão no seu espaço pode existir — e você nem percebe.
+          </h2>
+        </div>
+        <div className="grid sm:grid-cols-2 gap-x-16 gap-y-0">
+          <StaggerChildren visible={visible} baseDelay={200} increment={120}>
+            {pains.map((p) => (
+              <div
+                key={p.title}
+                className="group py-6 border-b border-border/60 last:border-b-0"
+              >
+                <div className="flex items-center gap-4 mb-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent/40 shrink-0 group-hover:bg-accent transition-colors duration-500" />
+                  <h3 className="font-display tracking-display text-lg sm:text-xl text-foreground group-hover:text-accent transition-colors duration-500">
+                    {p.title}
+                  </h3>
+                </div>
+                <p className="font-body font-light text-[13px] text-muted-foreground leading-[1.7] pl-[1.375rem]">
+                  {p.desc}
+                </p>
+              </div>
+            ))}
+          </StaggerChildren>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── IMAGE DIVIDER ─── */
+function ImageDivider({ src, alt }: { src: string; alt: string }) {
+  return (
+    <div className="img-hover-wrap">
+      <img
+        src={src}
+        alt={alt}
+        className="image-divider"
+        loading="lazy"
+      />
     </div>
   );
 }
 
-/* ─── HERO EDITORIAL ─── */
-function Hero() {
+/* ─── QUEBRA DE CRENÇA ─── */
+function BeliefBreak() {
   return (
-    <section id="top" className="relative h-screen w-full overflow-hidden bg-foreground">
-      <img
-        src={heroBg}
-        alt="Projeto em destaque — Éter Arquitetura e Design"
-        className="absolute inset-0 w-full h-full object-cover opacity-90"
-      />
-      <div className="absolute inset-0 bg-gradient-to-b from-foreground/30 via-transparent to-foreground/60" />
-
-      {/* Center title */}
-      <div className="absolute inset-0 flex items-center justify-center px-8">
-        <Reveal delay={300} className="max-w-5xl text-center">
-          <h1 className="font-serif-display text-secondary text-[clamp(2.5rem,6vw,5.5rem)] leading-[1.05] font-light">
-            Espaços que <em className="italic">comunicam</em>
-            <br />
-            antes da primeira palavra.
-          </h1>
-        </Reveal>
+    <RevealSection className="py-28 sm:py-36 px-8 sm:px-12" bg="bg-[#fbfaf8]">
+      <div className="max-w-3xl mx-auto text-center relative">
+        {/* Decorative quote */}
+        <span className="absolute -top-8 left-1/2 -translate-x-1/2 font-display text-[160px] leading-none text-accent/[0.08] select-none pointer-events-none">"</span>
+        <h2 className="font-display tracking-display text-3xl sm:text-4xl md:text-5xl text-foreground mb-10 leading-[1.1] relative z-10">
+          Não é somente sobre beleza.
+        </h2>
+        <p className="font-body font-light text-muted-foreground text-base sm:text-lg leading-[1.8] mb-6">
+          <span><em className="font-detail">Design estratégico</em> vai além de um ambiente bonito. É projetar e cuidar para que cada detalhe possa influenciar a <em className="font-detail">percepção</em> e a <em className="font-detail">decisão</em> do seu cliente.</span>
+        </p>
+        <p className="font-body font-light text-muted-foreground text-base sm:text-lg leading-[1.8]">
+          <span>Iluminação, materialidade, proporção, fluxo e harmonia – <em className="font-detail">tudo comunica</em>.</span>
+          <br />
+          <span>E quando comunica de forma assertiva, gera <em className="font-detail">conexão</em> e <em className="font-detail">valor</em>.</span>
+        </p>
       </div>
-
-      {/* Bottom caption */}
-      <div className="absolute bottom-10 left-0 right-0 px-6 sm:px-10 flex items-end justify-between gap-6">
-        <Reveal delay={700}>
-          <p className="label-caps text-secondary/90">
-            Éter Arquitetura · Goiânia / BR
-          </p>
-        </Reveal>
-        <Reveal delay={900}>
-          <span className="label-caps text-secondary/90 hidden sm:inline">
-            Role para descobrir ↓
-          </span>
-        </Reveal>
-      </div>
-    </section>
+    </RevealSection>
   );
 }
 
-/* ─── MANIFESTO ─── */
-function Manifesto() {
-  return (
-    <section className="py-32 sm:py-48 px-6 sm:px-10 bg-background">
-      <Reveal className="max-w-4xl mx-auto text-center">
-        <p className="label-caps text-muted-foreground mb-10">— Manifesto</p>
-        <p className="font-serif-display text-foreground text-[clamp(1.5rem,2.6vw,2.4rem)] leading-[1.45] font-light">
-          <em className="italic">Design estratégico</em> vai além de um ambiente bonito.
-          É projetar e cuidar para que cada detalhe possa influenciar
-          a <em className="italic">percepção</em> e a <em className="italic">decisão</em> do seu cliente.
-        </p>
-        <div className="mt-16 mx-auto h-px w-12 bg-foreground/30" />
-        <p className="mt-16 font-body font-light text-muted-foreground text-base sm:text-lg leading-[1.9] max-w-2xl mx-auto">
-          Iluminação, materialidade, proporção, fluxo e harmonia — tudo comunica.
-          E quando comunica de forma assertiva, gera conexão e valor.
-        </p>
-      </Reveal>
-    </section>
-  );
-}
-
-/* ─── PROJECTS — Editorial Asymmetric Grid ─── */
-type Project = {
-  title: string;
-  category: string;
-  location: string;
-  image: string;
-  size: "large" | "medium" | "small";
-  align: "left" | "right" | "center";
-};
-
-const PROJECTS: Project[] = [
-  { title: "Consultório Endocrinologista", category: "Saúde", location: "Goiânia", image: clinica1, size: "large", align: "left" },
-  { title: "Laboratório Salus", category: "Saúde", location: "Goiânia", image: salus3, size: "medium", align: "right" },
-  { title: "Consultório Cardiologista", category: "Saúde", location: "Goiânia", image: clinica4, size: "large", align: "center" },
-  { title: "Numer + Pétalla", category: "Varejo", location: "Goiânia", image: loja4, size: "medium", align: "left" },
-  { title: "Clínica Vinuz", category: "Saúde", location: "Goiânia", image: clinicaVinuz, size: "large", align: "right" },
-  { title: "Consultório Angiologista", category: "Saúde", location: "Goiânia", image: clinica2, size: "medium", align: "center" },
-];
-
-function ProjectItem({ project, index }: { project: Project; index: number }) {
+/* ─── PROMESSA ─── */
+function PromiseSection() {
   const { ref, visible } = useScrollReveal();
-  const sizeClasses = {
-    large: "w-full md:w-[78%]",
-    medium: "w-full md:w-[58%]",
-    small: "w-full md:w-[44%]",
-  }[project.size];
-  const alignClasses = {
-    left: "md:mr-auto",
-    right: "md:ml-auto",
-    center: "md:mx-auto",
-  }[project.align];
-  const aspect = project.size === "large" ? "aspect-[4/3]" : "aspect-[3/4]";
-
-  return (
-    <article
-      ref={ref}
-      className={`${sizeClasses} ${alignClasses} transition-all duration-[1100ms] ease-out`}
-      style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(40px)",
-      }}
-    >
-      <div className="img-hover-wrap overflow-hidden">
-        <img
-          src={project.image}
-          alt={project.title}
-          loading="lazy"
-          className={`w-full ${aspect} object-cover`}
-        />
-      </div>
-      <div className="mt-5 flex items-baseline justify-between gap-4">
-        <div>
-          <p className="label-caps text-muted-foreground mb-2">
-            {String(index + 1).padStart(2, "0")} · {project.category}
-          </p>
-          <h3 className="font-serif-display text-foreground text-xl sm:text-2xl font-light">
-            {project.title}
-          </h3>
-        </div>
-        <p className="label-caps text-muted-foreground whitespace-nowrap">
-          {project.location}
-        </p>
-      </div>
-    </article>
-  );
-}
-
-function Projects() {
-  return (
-    <section id="projetos" className="py-28 sm:py-40 px-6 sm:px-10 bg-background">
-      <div className="max-w-[1500px] mx-auto">
-        <Reveal className="mb-20 sm:mb-28 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
-          <div>
-            <p className="label-caps text-muted-foreground mb-5">— Selecionados</p>
-            <h2 className="font-serif-display text-foreground text-[clamp(2rem,4.5vw,3.5rem)] font-light leading-[1.1] max-w-2xl">
-              Projetos que <em className="italic">comunicam valor</em>.
-            </h2>
-          </div>
-          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="editorial-link text-foreground self-start sm:self-end">
-            Solicitar análise <ArrowRight className="w-3.5 h-3.5" />
-          </a>
-        </Reveal>
-
-        <div className="space-y-24 sm:space-y-36">
-          {PROJECTS.map((p, i) => (
-            <ProjectItem key={p.title} project={p} index={i} />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ─── STUDIO / SOBRE ─── */
-function Studio() {
-  return (
-    <section id="estudio" className="py-28 sm:py-40 px-6 sm:px-10 bg-background">
-      <div className="max-w-[1300px] mx-auto grid md:grid-cols-2 gap-16 lg:gap-24 items-center">
-        <Reveal>
-          <div className="img-hover-wrap overflow-hidden">
-            <img
-              src={sociasImg}
-              alt="Sócias — Éter Arquitetura e Design"
-              className="w-full aspect-[4/5] object-cover"
-              loading="lazy"
-            />
-          </div>
-        </Reveal>
-        <Reveal delay={150} className="max-w-md">
-          <p className="label-caps text-muted-foreground mb-8">— O Estúdio</p>
-          <h2 className="font-serif-display text-foreground text-[clamp(1.8rem,3.4vw,2.8rem)] font-light leading-[1.15] mb-10">
-            Arquitetura como <em className="italic">linguagem silenciosa</em> do seu negócio.
-          </h2>
-          <p className="font-body font-light text-muted-foreground text-base leading-[1.9] mb-6">
-            Atuamos no encontro entre estética e estratégia. Cada projeto é desenhado
-            para conduzir percepção, fortalecer marca e amplificar conversão — através
-            de iluminação, materialidade, proporção e fluxo.
-          </p>
-          <p className="font-body font-light text-muted-foreground text-base leading-[1.9] mb-12">
-            Acreditamos que ambientes não decoram negócios — eles os traduzem.
-          </p>
-          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="editorial-link text-foreground">
-            Conheça o estúdio <ArrowRight className="w-3.5 h-3.5" />
-          </a>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-/* ─── PROCESSO ─── */
-function Processo() {
-  const steps = [
-    {
-      num: "01",
-      title: "Diagnóstico Estratégico",
-      desc: "Analisamos seu espaço, seu público e as diretrizes centrais do seu negócio.",
-    },
-    {
-      num: "02",
-      title: "Projetamos atmosferas",
-      desc: "Transformamos estética em estratégia e experiências que conectam, envolvem e convertem.",
-    },
-    {
-      num: "03",
-      title: "Execução Orientada",
-      desc: "Acompanhamento próximo para garantir que o espaço entregue o que promete.",
-    },
+  const benefits = [
+    "Aumento do tempo de permanência no ambiente",
+    "Criar elementos agradáveis ao cliente, gerando conexão entre consumidor e marca",
+    "Aumento de ticket médio",
+    "Fidelização – percepção positiva, vontade de retornar",
+    "Direcionamento para reter seu cliente no espaço",
+    "Mudar a percepção de tempo",
+    "Bem estar e harmonia",
+    "Diferenciar marca",
+    "Marketing sensorial",
+    "Potencializar ponto de venda",
+    "Influenciar comportamento do consumidor",
+    "Melhorar performance da equipe",
   ];
-
   return (
-    <section id="processo" className="py-28 sm:py-40 px-6 sm:px-10 bg-background border-t border-border/40">
-      <div className="max-w-[1300px] mx-auto">
-        <Reveal className="mb-20 sm:mb-28 max-w-3xl">
-          <p className="label-caps text-muted-foreground mb-5">— Processo</p>
-          <h2 className="font-serif-display text-foreground text-[clamp(2rem,4vw,3.2rem)] font-light leading-[1.1]">
-            Um método feito para <em className="italic">traduzir</em> intenção em espaço.
+    <section ref={ref} className="py-28 sm:py-36 px-8 sm:px-12">
+      <div className="max-w-6xl mx-auto">
+        {/* Image centered */}
+        <div
+          className={`max-w-[800px] mx-auto mb-16 transition-all duration-[1000ms] ease-out ${
+            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+        >
+          <ImageComparison className="w-full h-[400px] sm:h-[520px] rounded-2xl" enableHover>
+            <ImageComparisonImage
+              src={depoisObra}
+              alt="Resultado final"
+              position="left"
+            />
+            <ImageComparisonImage
+              src={antesObra}
+              alt="Obra em andamento"
+              position="right"
+              className="grayscale"
+            />
+            <ImageComparisonSlider className="w-0.5 bg-white/30 backdrop-blur-sm">
+              <div className="absolute top-1/2 left-1/2 size-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white shadow-lg" />
+            </ImageComparisonSlider>
+          </ImageComparison>
+        </div>
+        {/* Title centered */}
+        <div
+          className={`text-center mb-14 transition-all duration-[900ms] ease-out ${
+            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+          style={{ transitionDelay: visible ? "200ms" : "0ms" }}
+        >
+          <div className="deco-line mx-auto mb-8" />
+          <h2 className="font-display tracking-display text-3xl sm:text-4xl text-foreground leading-[1.1]">
+            Por que investir em um projeto com a Éter?
           </h2>
-        </Reveal>
+        </div>
+        {/* Bullet points in 2 independent columns */}
+        {(() => {
+          const leftCol = [
+            "Aumento do tempo de permanência no ambiente",
+            "Aumento de ticket médio",
+            "Direcionamento para reter seu cliente no espaço",
+            "Bem estar e harmonia",
+            "Marketing sensorial",
+            "Influenciar comportamento do consumidor",
+            "Melhorar performance da equipe",
+          ];
+          const rightCol = [
+            "Criar elementos agradáveis ao cliente, gerando conexão entre consumidor e marca",
+            "Fidelização – percepção positiva, vontade de retornar",
+            "Mudar a percepção de tempo",
+            "Diferenciar marca",
+            "Potencializar ponto de venda",
+          ];
+          const renderItem = (b: string, i: number, offset: number) => (
+            <li
+              key={b}
+              className={`flex items-start gap-3 transition-all duration-[600ms] ease-out ${
+                visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"
+              }`}
+              style={{ transitionDelay: visible ? `${400 + (offset + i) * 100}ms` : "0ms" }}
+            >
+              <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0" />
+              <span className="font-body font-light text-muted-foreground leading-[1.5]">{b}</span>
+            </li>
+          );
+          return (
+            <div className="flex flex-col sm:flex-row gap-x-10 gap-y-2 max-w-4xl mx-auto">
+              <ul className="flex-1 space-y-2">
+                {leftCol.map((b, i) => renderItem(b, i, 0))}
+              </ul>
+              <ul className="flex-1 space-y-2">
+                {rightCol.map((b, i) => renderItem(b, i, leftCol.length))}
+              </ul>
+            </div>
+          );
+        })()}
+      </div>
+    </section>
+  );
+}
 
-        <div className="grid md:grid-cols-3 gap-12 md:gap-16">
-          {steps.map((s, i) => (
-            <Reveal key={s.num} delay={i * 150}>
-              <div className="border-t border-foreground/20 pt-8">
-                <p className="font-serif-display text-foreground/70 text-5xl font-light mb-8">
+function Process() {
+  const { ref, visible } = useScrollReveal();
+  const steps = [
+    { icon: Target, num: "01", title: "Diagnóstico Estratégico", desc: "Analisamos seu espaço, seu público e as diretrizes centrais do seu negócio." },
+    { icon: Lightbulb, num: "02", title: "Projetamos atmosferas", desc: "Transformamos estética em estratégia e experiências que conectam , envolvem e convertem." },
+    { icon: Ruler, num: "03", title: "Execução Orientada", desc: "Acompanhamento próximo para garantir que o espaço entregue o que promete." },
+  ];
+  return (
+    <section ref={ref} className="py-28 sm:py-36 px-8 sm:px-12 bg-white">
+      <div className="max-w-5xl mx-auto">
+        <div
+          className={`transition-all duration-[900ms] ease-out text-center mb-20 ${
+            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+        >
+          <p className="font-body text-[11px] tracking-[0.4em] uppercase text-muted-foreground mb-5">
+            Processo
+          </p>
+          <h2 className="font-display tracking-display text-3xl sm:text-4xl text-foreground leading-[1.1]">
+            Como funciona
+          </h2>
+        </div>
+        <div className="grid md:grid-cols-3 gap-12 md:gap-8 timeline-line relative">
+          <StaggerChildren visible={visible} baseDelay={200} increment={180}>
+            {steps.map((s) => (
+              <div key={s.num} className="text-center group relative z-10">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full border border-border bg-background mb-8 group-hover:border-accent transition-all duration-500">
+                  <s.icon className="w-6 h-6 text-foreground" />
+                </div>
+                {/* Large background number */}
+                <div className="absolute top-12 left-1/2 -translate-x-1/2 font-display text-[120px] leading-none text-foreground/[0.03] select-none pointer-events-none">
                   {s.num}
-                </p>
-                <h3 className="font-serif-display text-foreground text-xl sm:text-2xl font-light mb-5">
+                </div>
+                <h3 className="font-display tracking-display text-2xl text-foreground mb-4 relative">
                   {s.title}
                 </h3>
-                <p className="font-body font-light text-muted-foreground text-sm leading-[1.9]">
+                <p className="font-body font-light text-[15px] text-muted-foreground leading-[1.8] relative max-w-[280px] mx-auto">
                   {s.desc}
                 </p>
               </div>
-            </Reveal>
-          ))}
+            ))}
+          </StaggerChildren>
         </div>
       </div>
     </section>
   );
 }
 
-/* ─── CTA EDITORIAL ─── */
+/* ─── PROJETOS — Portfolio Carousel ─── */
+function Projects() {
+  const { ref, visible } = useScrollReveal();
+  const gridItems = [
+    { title: "Consultório Endocrinologista", image: clinica1 },
+    { title: "Consultório Angiologista", image: clinica2 },
+    { title: "Consultório Cardiologista", image: clinica4 },
+    { title: "Laboratório Salus", image: salus3 },
+    { title: "Numer+Pétalla", image: loja4 },
+    { title: "Clínica Vinuz", image: clinicaVinuz },
+  ];
+
+  return (
+    <section ref={ref} className="py-28 sm:py-36 px-8 sm:px-12 bg-white">
+      <div className="max-w-6xl mx-auto">
+        <div
+          className={`transition-all duration-[900ms] ease-out text-center mb-20 ${
+            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+        >
+          <p className="font-body text-[11px] tracking-[0.4em] uppercase text-muted-foreground mb-5">
+            Portfólio
+          </p>
+          <h2 className="font-display tracking-display text-3xl sm:text-4xl text-foreground leading-[1.1]">
+            Projetos que comunicam valor
+          </h2>
+        </div>
+        <div
+          className={`transition-all duration-[900ms] ease-out ${
+            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+          style={{ transitionDelay: visible ? "300ms" : "0ms" }}
+        >
+          <PortfolioGrid items={gridItems} />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── CTA FINAL (com foto das sócias atrás) ─── */
 function FinalCTA() {
   return (
-    <section
-      id="contato"
-      className="relative py-32 sm:py-48 px-6 sm:px-10 bg-background overflow-hidden border-t border-border/40"
-    >
-      <div className="absolute inset-0 opacity-[0.04] pointer-events-none">
-        <img src={depoisObra} alt="" className="w-full h-full object-cover" />
+    <RevealSection className="relative overflow-hidden py-20 sm:py-32 px-8 sm:px-12" bg="bg-white">
+      <div className="max-w-5xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+        {/* Foto das sócias — lado esquerdo */}
+        <div className="w-full lg:w-1/2 flex justify-center">
+          <div className="max-w-[360px] sm:max-w-[400px] w-full">
+            <img
+              src={sociasImg}
+              alt="Sócias — Éter Arquitetura e Design"
+              className="w-full h-auto rounded-lg"
+            />
+          </div>
+        </div>
+        {/* Texto e CTA — lado direito */}
+        <div className="w-full lg:w-1/2 text-center lg:text-left">
+          <div className="deco-line mb-10 bg-[#5c4336]/30 mx-auto lg:mx-0" />
+          <h2 className="font-display tracking-display text-3xl sm:text-4xl md:text-5xl text-[#5c4336] mb-8 leading-[1.1]">
+            Seu ambiente te reduz ou te traduz?
+          </h2>
+          <p className="font-body font-light text-[#5c4336] text-base sm:text-lg mb-14 leading-[1.8]">
+            Solicite a Análise de Expressão Espacial e descubra o que seu
+            ambiente está comunicando.
+          </p>
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            id="cta-final-whatsapp"
+            data-gtm-event="cta_final_click"
+            data-gtm-label="Final CTA WhatsApp"
+            className="gtm-cta gtm-cta-final inline-flex items-center gap-3 bg-[#5c4939] text-[#e5eaed] font-body font-medium text-sm px-10 py-4 rounded-full hover:opacity-90 transition-all duration-500 hover:-translate-y-0.5 hover:shadow-2xl"
+          >
+            <MessageCircle className="w-5 h-5" />
+            Quero minha análise no WhatsApp
+          </a>
+        </div>
       </div>
-      <Reveal className="relative max-w-4xl mx-auto text-center">
-        <p className="label-caps text-muted-foreground mb-10">— Convite</p>
-        <h2 className="font-serif-display text-foreground text-[clamp(2.2rem,5.5vw,4.8rem)] font-light leading-[1.05] mb-14">
-          Seu ambiente te <em className="italic">reduz</em>
-          <br />
-          ou te <em className="italic">traduz</em>?
-        </h2>
-        <p className="font-body font-light text-muted-foreground text-base sm:text-lg max-w-xl mx-auto leading-[1.9] mb-14">
-          Solicite a Análise de Expressão Espacial e descubra o que seu ambiente está comunicando.
-        </p>
-        <a
-          href={WHATSAPP_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          id="cta-final-whatsapp"
-          data-gtm-event="cta_final_click"
-          data-gtm-label="Final CTA WhatsApp"
-          className="gtm-cta gtm-cta-final editorial-link text-foreground"
-        >
-          Solicitar análise no WhatsApp <ArrowRight className="w-3.5 h-3.5" />
-        </a>
-      </Reveal>
-    </section>
+    </RevealSection>
   );
 }
 
-/* ─── FOOTER EDITORIAL ─── */
+/* ─── FOOTER ─── */
 function Footer() {
   return (
-    <footer className="bg-foreground text-secondary px-6 sm:px-10 pt-24 pb-10">
-      <div className="max-w-[1500px] mx-auto">
-        <div className="grid md:grid-cols-3 gap-14 md:gap-10 pb-16 border-b border-secondary/15">
-          <div>
-            <img
-              src={logoEterFooter}
-              alt="Éter Arquitetura e Design"
-              className="h-12 w-auto opacity-90 mb-8"
-            />
-            <p className="font-serif-display text-secondary/90 text-lg font-light leading-[1.5] italic max-w-xs">
-              Arquitetura como linguagem silenciosa do seu negócio.
-            </p>
-          </div>
-          <div>
-            <p className="label-caps text-secondary/60 mb-6">Contato</p>
-            <ul className="space-y-3 font-body font-light text-secondary/90 text-sm">
-              <li>
-                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="link-underline">
-                  WhatsApp · +55 62 9954-2888
-                </a>
-              </li>
-              <li>Goiânia · Brasil</li>
-            </ul>
-          </div>
-          <div>
-            <p className="label-caps text-secondary/60 mb-6">Navegação</p>
-            <ul className="space-y-3 font-body font-light text-secondary/90 text-sm">
-              <li><a href="#projetos" className="link-underline">Projetos</a></li>
-              <li><a href="#estudio" className="link-underline">Estúdio</a></li>
-              <li><a href="#processo" className="link-underline">Processo</a></li>
-              <li><a href="#contato" className="link-underline">Contato</a></li>
-            </ul>
-          </div>
+    <footer className="py-16 px-8 sm:px-12 border-t border-border">
+      <div className="max-w-5xl mx-auto flex flex-col items-center gap-10">
+        <div>
+          <img src={logoEterFooter} alt="Éter Arquitetura e Design" className="h-14 w-auto opacity-80" />
         </div>
-        <div className="mt-10 flex flex-col sm:flex-row justify-between gap-4 label-caps text-secondary/50">
-          <p>© {new Date().getFullYear()} Éter Arquitetura e Design</p>
-          <p>Todos os direitos reservados</p>
-        </div>
+      </div>
+      <div className="max-w-5xl mx-auto mt-12 pt-8 border-t border-border">
+        <p className="font-body font-light text-xs text-muted-foreground text-center tracking-wide">
+          © {new Date().getFullYear()} Éter Arquitetura e Design. Todos os direitos reservados.
+        </p>
       </div>
     </footer>
   );
@@ -408,12 +486,13 @@ function FloatingWhatsApp() {
 export default function LandingPage() {
   return (
     <div className="font-body bg-background text-foreground overflow-x-hidden">
-      <SiteHeader />
       <Hero />
-      <Manifesto />
+      <ProblemBlock />
+      <BeliefBreak />
+      <PromiseSection />
+      
+      <Process />
       <Projects />
-      <Studio />
-      <Processo />
       <FinalCTA />
       <Footer />
       <FloatingWhatsApp />
