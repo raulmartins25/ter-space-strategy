@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, MessageCircle, Instagram, Phone } from "lucide-react";
 import Navbar from "@/components/Navbar";
+import { PortfolioGrid } from "@/components/ui/portfolio-grid";
 
 import logoEterFooter from "@/assets/logo-eter-footer.png";
 import heroBg from "@/assets/hero-bg-site.jpg";
