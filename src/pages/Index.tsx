@@ -215,41 +215,52 @@ function About() {
         </p>
       </div>
 
-      {/* Sócias */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-12 max-w-7xl mx-auto">
-        {socias.map((s, i) => (
-          <div
-            key={s.name}
-            className={`grid grid-cols-1 sm:grid-cols-5 gap-6 sm:gap-8 transition-opacity duration-[1100ms] ${
-              visible ? "opacity-100" : "opacity-0"
-            }`}
-            style={{ transitionDelay: visible ? `${i * 200}ms` : "0ms" }}
-          >
-            <div className="sm:col-span-2">
-              <img
-                src={s.img}
-                alt={`${s.name} — ${s.role}`}
-                className="w-full aspect-[3/4] object-cover"
-              />
-            </div>
-            <div className="sm:col-span-3 flex flex-col justify-center">
-              <h3 className="font-display tracking-display text-2xl text-foreground leading-tight mb-2">
-                {s.name}
-              </h3>
-              <p className="font-body text-[10px] tracking-[0.4em] uppercase text-muted-foreground mb-6">
-                {s.role}
-              </p>
-              {s.bio.map((p, j) => (
-                <p
-                  key={j}
-                  className="font-body font-light text-[14px] text-muted-foreground leading-[1.9] mb-4 last:mb-0"
-                >
-                  {p}
+      {/* Sócias — empilhadas, alternando lado da foto */}
+      <div className="flex flex-col gap-20 sm:gap-28 max-w-5xl mx-auto">
+        {socias.map((s, i) => {
+          const imageFirst = i % 2 === 0;
+          return (
+            <div
+              key={s.name}
+              className={`grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center transition-opacity duration-[1100ms] ${
+                visible ? "opacity-100" : "opacity-0"
+              }`}
+              style={{ transitionDelay: visible ? `${i * 200}ms` : "0ms" }}
+            >
+              <div
+                className={`md:col-span-5 ${
+                  imageFirst ? "md:order-1" : "md:order-2"
+                }`}
+              >
+                <img
+                  src={s.img}
+                  alt={`${s.name} — ${s.role}`}
+                  className="w-full aspect-[3/4] object-cover"
+                />
+              </div>
+              <div
+                className={`md:col-span-7 flex flex-col justify-center ${
+                  imageFirst ? "md:order-2" : "md:order-1"
+                }`}
+              >
+                <h3 className="font-display tracking-display text-2xl sm:text-3xl text-foreground leading-tight mb-3">
+                  {s.name}
+                </h3>
+                <p className="font-body text-[10px] tracking-[0.4em] uppercase text-muted-foreground mb-8">
+                  {s.role}
                 </p>
-              ))}
+                {s.bio.map((p, j) => (
+                  <p
+                    key={j}
+                    className="font-body font-light text-[15px] text-muted-foreground leading-[1.9] mb-4 last:mb-0 max-w-xl"
+                  >
+                    {p}
+                  </p>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
