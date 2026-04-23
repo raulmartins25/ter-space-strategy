@@ -72,9 +72,11 @@ function Hero() {
             Arquitetura<br />
             é <em className="font-detail">estratégia</em>.
           </h1>
-          <p className="mt-8 font-body font-light text-muted-foreground text-base sm:text-lg max-w-md leading-[1.8]">
-            Projetamos espaços comerciais e corporativos que comunicam valor,
-            geram conexão e potencializam resultados.
+          <p className="mt-8 font-body font-light text-muted-foreground text-base sm:text-lg max-w-lg leading-[1.8]">
+            Na Éter Arquitetura e Design, criamos mais do que espaços, desenhamos
+            atmosferas onde sua marca se expressa em forma, identidade e
+            essência. Transformamos estética em estratégia, experiências que
+            conectam, envolvem e convertem.
           </p>
         </motion.div>
 
