@@ -333,17 +333,49 @@ function Method() {
 }
 
 /* ═══════════════════════════════════════════
-   DEPOIMENTOS — Embed Google Maps (perfil Éter)
+   DEPOIMENTOS — Cards estilo Google Reviews
    ═══════════════════════════════════════════ */
 const GOOGLE_REVIEWS_URL = "https://maps.app.goo.gl/UgH16PQWy2yUkneb9";
-const GOOGLE_MAPS_EMBED =
-  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d980933.453446065!2d-48.377620549999996!3d-16.1807399!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x27507b8b44d9a877%3A0x12585ecda70c5250!2s%C3%89ter%20Arquitetura%20e%20Design!5e0!3m2!1spt-BR!2sbr!4v1776973580088!5m2!1spt-BR!2sbr";
+
+const googleReviews = [
+  {
+    text: "A empresa Cardio Diagnósticos gostaria de expressar seu sincero agradecimento à designer Fernanda e a toda a equipe de arquitetura pelo excelente trabalho realizado. O resultado final ficou realmente muito bom e atendeu às nossas expectativas! Destacamos especialmente a postura da empresa, que sempre esteve aberta a nos ouvir e respeitou muito nossas ideias e necessidades. Houve um cuidado constante em adequar o projeto aos custos da obra, sem perder qualidade e bom gosto.",
+    author: "Fernanda Vaz",
+    when: "há 1 dia",
+    initial: "F",
+    color: "#1a73e8",
+  },
+  {
+    text: "A Éter fez o projeto do quarto da minha filha de 10 anos — e o resultado simplesmente superou todas as expectativas. A Fernanda conseguiu captar com sensibilidade o gosto, os sonhos e a personalidade da minha filha, transformando tudo isso em um espaço lindo, acolhedor, funcional e cheio de identidade. Eu e minha filha amamos o projeto!",
+    author: "Maisa Bueno Machado",
+    when: "há 8 horas",
+    initial: "M",
+    color: "#e8710a",
+  },
+  {
+    text: "Incrível! Entregou mais do que o esperado e em um curto espaço de tempo. Recomendo! Fizeram a recepção do Lab Salus. Podem conferir as fotos do antes e depois na galeria de fotos.",
+    author: "Rosana Pereira Morais",
+    when: "há 1 dia",
+    initial: "R",
+    color: "#34a853",
+  },
+];
+
+/* Logo G do Google em SVG (4 cores oficiais) */
+const GoogleLogo = ({ className = "" }: { className?: string }) => (
+  <svg viewBox="0 0 48 48" className={className} aria-hidden="true">
+    <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+    <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+    <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+    <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+  </svg>
+);
 
 function Quote() {
   const { ref, visible } = useReveal();
   return (
-    <section ref={ref} className="bg-background py-28 sm:py-40 px-6 sm:px-12">
-      <div className="max-w-5xl mx-auto">
+    <section ref={ref} className="bg-secondary py-28 sm:py-40 px-6 sm:px-12">
+      <div className="max-w-6xl mx-auto">
         <div
           className={`text-center mb-16 sm:mb-20 transition-opacity duration-[1100ms] ${
             visible ? "opacity-100" : "opacity-0"
@@ -352,33 +384,72 @@ function Quote() {
           <p className="font-body text-[10px] tracking-[0.5em] uppercase text-muted-foreground mb-6">
             Avaliações
           </p>
-          <h2 className="font-display tracking-display text-3xl sm:text-4xl md:text-5xl text-foreground leading-[1.1]">
-            Encontre-nos no <em className="font-detail">Google</em>.
+          <h2 className="font-display tracking-display text-3xl sm:text-4xl md:text-5xl text-foreground leading-[1.1] mb-8">
+            O que dizem no <em className="font-detail">Google</em>.
           </h2>
+          <div className="inline-flex items-center gap-3 text-foreground">
+            <GoogleLogo className="w-5 h-5" />
+            <div className="flex items-center gap-2">
+              <span className="font-display text-xl">5,0</span>
+              <div className="flex gap-0.5" aria-label="5 estrelas">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <svg key={i} className="w-4 h-4" viewBox="0 0 24 24" fill="#fbbc04">
+                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                  </svg>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div
-          className={`w-full overflow-hidden border border-border transition-opacity duration-[1200ms] ${
-            visible ? "opacity-100" : "opacity-0"
-          }`}
-          style={{ transitionDelay: visible ? "200ms" : "0ms" }}
-        >
-          <iframe
-            src={GOOGLE_MAPS_EMBED}
-            title="Éter Arquitetura e Design no Google Maps"
-            className="w-full h-[420px] sm:h-[500px] grayscale-[0.3] contrast-[0.95]"
-            style={{ border: 0 }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {googleReviews.map((r, i) => (
+            <article
+              key={r.author}
+              className={`bg-background border border-border p-7 flex flex-col transition-all duration-[1100ms] hover:shadow-md ${
+                visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
+              style={{ transitionDelay: visible ? `${i * 150}ms` : "0ms" }}
+            >
+              <header className="flex items-start gap-3 mb-4">
+                <div
+                  className="w-10 h-10 rounded-full flex items-center justify-center text-background font-body font-medium text-sm shrink-0"
+                  style={{ backgroundColor: r.color }}
+                  aria-hidden="true"
+                >
+                  {r.initial}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="font-body text-sm text-foreground leading-tight truncate">
+                    {r.author}
+                  </p>
+                  <div className="flex items-center gap-2 mt-1">
+                    <div className="flex gap-0.5">
+                      {Array.from({ length: 5 }).map((_, s) => (
+                        <svg key={s} className="w-3 h-3" viewBox="0 0 24 24" fill="#fbbc04">
+                          <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                        </svg>
+                      ))}
+                    </div>
+                    <span className="font-body text-[11px] text-muted-foreground">
+                      {r.when}
+                    </span>
+                  </div>
+                </div>
+                <GoogleLogo className="w-4 h-4 shrink-0 mt-1" />
+              </header>
+              <p className="font-body font-light text-[14px] text-muted-foreground leading-[1.7] flex-1">
+                {r.text}
+              </p>
+            </article>
+          ))}
         </div>
 
         <div
           className={`mt-12 flex justify-center transition-opacity duration-[1100ms] ${
             visible ? "opacity-100" : "opacity-0"
           }`}
-          style={{ transitionDelay: visible ? "400ms" : "0ms" }}
+          style={{ transitionDelay: visible ? "600ms" : "0ms" }}
         >
           <a
             href={GOOGLE_REVIEWS_URL}
@@ -386,7 +457,7 @@ function Quote() {
             rel="noopener noreferrer"
             className="link-underline font-body text-[11px] tracking-[0.4em] uppercase text-foreground inline-flex items-center gap-3"
           >
-            Ver avaliações no Google <ArrowRight className="w-4 h-4" />
+            Ver todas no Google <ArrowRight className="w-4 h-4" />
           </a>
         </div>
       </div>
