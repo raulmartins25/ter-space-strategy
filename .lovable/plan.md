@@ -1,104 +1,49 @@
 
-## Redesenho da Home Page no estilo Studio Arthur Casas
+## Correção: aplicar redesign Arthur Casas na rota `/` (Index.tsx)
 
-Vou transformar a home page atual em uma experiência visual no estilo do site do Studio Arthur Casas — minimalista, sofisticado, com tipografia editorial, muito espaço em branco, navegação fixa minimalista e fotografia em destaque.
+### Problema identificado
 
-### Referência visual (arthurcasas.com)
-- Header fixo minimalista com logo central/esquerdo e menu textual horizontal
-- Hero em tela cheia com imagem grande de projeto (sem texto sobreposto pesado)
-- Tipografia serifada/leve, títulos enormes em peso fino, muito leading
-- Seções compostas por **imagens grandes em grid assimétrico** com legendas discretas (nome do projeto + localização em caixa alta pequena)
-- Transições suaves, scroll fluido, paleta off-white/preto/bege
-- Quase sem botões — links em texto sublinhado fino com seta "→"
-- Footer denso e tipográfico (contato, redes, newsletter)
+O redesign editorial estilo Studio Arthur Casas foi aplicado em `src/pages/LandingPage.tsx` (rota `/lp`), mas deveria ter sido aplicado em `src/pages/Index.tsx` (rota `/`, a home).
 
-### O que será construído
+```text
+/      → Index.tsx        ← deveria ter sido aqui (ainda no design antigo)
+/lp    → LandingPage.tsx  ← redesign Arthur Casas foi aplicado aqui (errado)
+```
 
-**1. Header fixo minimalista**
-- Logo Éter à esquerda (versão pequena)
-- Menu horizontal à direita: `Projetos · Estúdio · Processo · Contato`
-- Background transparente que vira off-white ao rolar
-- Tipografia em caixa alta, tracking largo, peso 300
+### Plano de correção
 
-**2. Hero editorial**
-- Imagem de projeto em tela cheia (usar `depoisObra` ou `clinica1`)
-- Título sobreposto em baixo à esquerda: nome do projeto + tipo, em caixa alta pequena
-- Frase manifesto em uma linha, tipografia serifada grande e leve, posicionada em baixo
-- Sem botões grandes — apenas indicador de scroll discreto
+**1. Reverter `src/pages/LandingPage.tsx`**
+- Restaurar o conteúdo anterior da `/lp` para que volte a ser a landing page institucional/comercial original (como estava antes do redesign).
 
-**3. Seção manifesto**
-- Bloco de texto curto e centralizado, fonte serifada (Lora) em ~32-40px peso 300
-- Muito espaço vertical (padding 200px+)
-- Conteúdo aproveitado da seção atual "Não é somente sobre beleza"
+**2. Aplicar o redesign Arthur Casas em `src/pages/Index.tsx`**
+- Reescrever `Index.tsx` com a mesma estrutura editorial já desenhada:
+  - `SiteHeader` fixo minimalista (componente já existe em `src/components/ui/site-header.tsx`, será reutilizado)
+  - Hero editorial fullscreen com tipografia Lora
+  - Manifesto centralizado serif
+  - Grid assimétrico de projetos (large/medium, left/right) usando as imagens já existentes (clinica1, clinica2, clinica4, loja2, loja3, loja4, salus1, salus2)
+  - Seção Estúdio com sócias
+  - Processo em 3 colunas tipográficas
+  - CTA final editorial
+  - Footer denso
+  - Botão flutuante WhatsApp mantido
+- Manter classes utilitárias `.label-caps`, `.editorial-link`, `.font-serif-display` já adicionadas em `src/index.css` (não precisa alterar CSS).
 
-**4. Grid editorial de projetos (substitui PortfolioGrid atual)**
-- Layout assimétrico: imagens em tamanhos diferentes alternando esquerda/direita
-- Cada projeto: imagem grande + nome em caixa alta pequena + tipo/local em itálico discreto
-- Hover: leve zoom na imagem + linha sublinhada no título
-- Sem cards, sem bordas, sem sombras — apenas imagem + texto
+**3. Manter intacto**
+- `src/App.tsx` (rotas continuam iguais)
+- `src/index.css` (utilitários editoriais permanecem)
+- `src/components/ui/site-header.tsx` (componente reutilizado)
+- Todas as imagens em `src/assets/`
+- Link do WhatsApp e IDs de tracking GTM (`cta-hero-inst-whatsapp`, `data-gtm-event`, etc.) — preservados na nova `/`
 
-**5. Seção "Estúdio / Sobre"**
-- Imagem das sócias à esquerda (50%)
-- Texto manifesto à direita em coluna estreita, tipografia serifada
-- Link textual "Conheça o estúdio →" em vez de botão
+### Como vai ficar após a correção
 
-**6. Seção Processo (versão minimalista)**
-- Três colunas com numeração tipográfica grande (01, 02, 03) em peso fino
-- Sem ícones, sem círculos — apenas tipografia e texto curto abaixo
-- Linha horizontal fina separando
-
-**7. CTA final editorial**
-- Tela inteira off-white com pergunta central em fonte serifada gigante
-- Link textual sublinhado "Solicite sua análise →" (sem botão preenchido)
-
-**8. Footer denso e tipográfico**
-- Três colunas: Logo + tagline | Contato (whatsapp, email) | Redes
-- Tipografia toda em caixa alta pequena, tracking largo
-- Linha fina superior
+```text
+/      → Index.tsx        ← redesign editorial Arthur Casas (correto)
+/lp    → LandingPage.tsx  ← landing institucional original restaurada
+```
 
 ### Detalhes técnicos
 
-**Arquivos a criar/editar:**
-- `src/pages/LandingPage.tsx` — reescrita completa das seções mantendo imports e WhatsApp URL
-- `src/components/ui/site-header.tsx` — novo header fixo minimalista
-- `src/index.css` — ajustes em `.font-detail` se necessário, novas utilities (`.editorial-link`, `.label-caps`)
-- `tailwind.config.ts` — manter; talvez adicionar tracking custom
-
-**Componentes a remover do uso (não deletados):**
-- `HeroSection` (hero-section-2) — substituído por hero customizado
-- `PortfolioGrid` — substituído por grid editorial inline
-- `ImageComparison` (antes/depois) — não combina com o estilo de referência
-
-**Paleta:**
-- Background: `#f5f3ee` (off-white quente)
-- Texto: `#1a1a1a`
-- Acento sutil: `#5c4336` (mantém marrom atual)
-
-**Tipografia:**
-- Títulos grandes: Lora (serifada, peso 300)
-- Labels/menu/captions: Poppins caixa alta, tracking 0.3em, peso 400, ~11px
-- Corpo: Poppins peso 300
-
-**Animações:**
-- Fade-up suave em scroll (manter `useScrollReveal` existente)
-- Hover de imagens: `scale(1.02)` em 800ms ease-out
-- Cursor de link com seta animada `→` que desliza ao hover
-
-**Conteúdo preservado:**
-- Todas as imagens atuais (clinica1-4, salus, loja4, vinuz, sócias, antes/depois)
-- Texto institucional (manifesto, problema, processo, benefícios) — apenas reorganizado
-- Link do WhatsApp permanece o mesmo
-
-### Estrutura final da página
-
-```text
-[Header fixo]
-[Hero editorial fullscreen]
-[Manifesto centralizado]
-[Grid editorial — 6 projetos assimétricos]
-[Estúdio — sócias + texto]
-[Processo — 3 colunas tipográficas]
-[CTA final editorial]
-[Footer denso]
-[Floating WhatsApp — mantido]
-```
+- A reversão de `LandingPage.tsx` será feita restaurando a versão anterior ao redesign (pré-mensagem "quero que a home page seja no estilo arthurcasas").
+- A nova `Index.tsx` usará exatamente a mesma arquitetura de componentes/seções já validada, apenas movida de arquivo.
+- Tracking GTM/IDs do CTA WhatsApp serão reaplicados nos botões da nova home para não quebrar analytics.
