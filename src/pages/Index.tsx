@@ -76,6 +76,17 @@ function Hero() {
             Na Éter Arquitetura e Design, desenvolvemos projetos de arquitetura e
             design que traduzem a essência de cada marca em espaços sofisticados
             e funcionais.
+            <br />
+            <br />
+            Cada ambiente é concebido para proporcionar experiências marcantes,
+            fortalecendo a identidade do negócio e favorecendo sua operação de
+            forma fluida e eficiente. Unimos sensibilidade estética, técnica e
+            atenção aos detalhes para criar espaços que conectam, comunicam
+            aumentando a percepção de valor.
+            <br />
+            <br />
+            Do conceito à especificação de mobiliário e iluminação, entregamos
+            projetos completos, o intertício entre beleza e estratégia.
           </p>
         </motion.div>
 
