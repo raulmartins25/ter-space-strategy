@@ -164,7 +164,7 @@ function Projects() {
         }`}
         style={{ transitionDelay: visible ? "200ms" : "0ms" }}
       >
-        <PortfolioGrid items={items} />
+        <PortfolioGrid items={items} dimmed />
       </div>
 
       <div className="mt-16 sm:mt-20 flex justify-center">
