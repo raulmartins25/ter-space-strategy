@@ -75,7 +75,8 @@ function Hero() {
           <p className="mt-8 font-body font-light text-muted-foreground text-base sm:text-lg max-w-lg leading-[1.8]">
             Na Éter Arquitetura e Design, criamos mais do que espaços, desenhamos
             atmosferas onde sua marca se expressa em forma, identidade e
-            essência. Transformamos estética em estratégia, experiências que
+            essência. <br /><br />
+            Transformamos estética em estratégia, experiências que
             conectam, envolvem e convertem.
           </p>
         </motion.div>
