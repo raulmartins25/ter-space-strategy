@@ -81,7 +81,7 @@ function Hero() {
             Cada ambiente é concebido para proporcionar experiências marcantes,
             fortalecendo a identidade do negócio e favorecendo sua operação de
             forma fluida e eficiente. Unimos sensibilidade estética, técnica e
-            atenção aos detalhes para criar espaços que conectam, comunicam
+            atenção aos detalhes para criar espaços que conectam e comunicam,
             aumentando a percepção de valor.
             <br />
             <br />
