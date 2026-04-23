@@ -1,21 +1,26 @@
 
-# Trocar logo do menu apenas na página `/`
+# Trocar 3 passos da seção "Método" da `/` pelo modelo da `/lp`
 
-Hoje, `Navbar` é compartilhado entre `/` e `/lp`. Para trocar a logo **só na `/`** sem afetar a `/lp`, adiciono uma prop opcional no `Navbar`.
+Replico o componente `Process` da `/lp` (com ícones, círculos, número translúcido grande de fundo e linha do tempo) dentro da função `Method()` da `/`, mantendo `id="metodo"` e o fundo `bg-secondary`.
+
+## Conteúdo dos 3 passos (igual à `/lp`)
+
+1. **01 — Diagnóstico Estratégico** (ícone `Target`)  
+   "Analisamos seu espaço, seu público e as diretrizes centrais do seu negócio."
+2. **02 — Projetamos atmosferas** (ícone `Lightbulb`)  
+   "Transformamos estética em estratégia e experiências que conectam, envolvem e convertem."
+3. **03 — Execução Orientada** (ícone `Ruler`)  
+   "Acompanhamento próximo para garantir que o espaço entregue o que promete."
 
 ## Implementação
 
-1. **Copiar asset**: `user-uploads://logoo-removebg-preview.png` → `src/assets/logo-eter-novo.png`
+Único arquivo alterado: `src/pages/Index.tsx`
 
-2. **`src/components/Navbar.tsx`**:
-   - Aceitar prop opcional `logoSrc?: string` (default = `logo-eter-site.jpeg` atual, mantendo `/lp` intacta)
-   - Usar `logoSrc` nas 3 `<img>` (sidebar desktop, top bar mobile, off-canvas mobile)
-   - Remover `rounded-sm` quando a logo nova for usada (PNG transparente não precisa)
+- **Imports**: adicionar `Target, Lightbulb, Ruler` ao import de `lucide-react`
+- **Função `Method()`**: reescrever apenas o conteúdo:
+  - Header centralizado mantendo eyebrow "Método" + título "Como *projetamos*."
+  - Grid `md:grid-cols-3` com classe `timeline-line` (já usada em `/lp` — linha horizontal sutil entre os círculos)
+  - Cada passo: círculo `w-16 h-16` com borda + ícone, número grande (120px) translúcido como marca-d'água atrás do título, título em `font-display`, descrição centralizada com `max-w-[280px]`
+  - Animação `useReveal` mantida com stagger de 180ms
 
-3. **`src/pages/Index.tsx`**: passar `<Navbar logoSrc={logoEterNovo} />` importando o novo asset.
-
-4. **`src/pages/LandingPage.tsx`**: **não é tocada** — segue usando a logo padrão.
-
-## Ajustes de tamanho
-
-Como a logo nova é horizontal (mais larga que alta), aumento ligeiramente a altura para manter legibilidade: sidebar `h-14`, top mobile `h-10`, off-canvas `h-11` — apenas quando `logoSrc` customizada é passada.
+Sidebar, hero, sobre, projetos, depoimento, contato e footer permanecem intactos. `/lp` não é tocada.
