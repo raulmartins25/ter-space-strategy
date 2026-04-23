@@ -1,14 +1,27 @@
 
 
-# Ajuste visual — seção Avaliações
+# Hero `/` — espaçamento e título em linha única
 
-Mudanças mínimas em `src/pages/Index.tsx` na função `Quote`:
+Ajustes em `src/pages/Index.tsx`, na função `Hero`:
 
-1. **Fundo da seção**: trocar `bg-secondary` por `bg-background` (branco/off-white do tema).
-2. **Cards**: como o fundo agora é igual ao do card, adicionar contraste com:
-   - Borda mais sutil: `border border-border/70`
-   - Sombra leve em estado padrão: `shadow-[0_2px_12px_-4px_hsl(var(--foreground)/0.08)]`
-   - Sombra mais pronunciada no hover: `shadow-[0_8px_24px_-8px_hsl(var(--foreground)/0.15)]`
+1. **Título "Arquitetura é estratégia." em uma única linha**
+   - Remover o `<br />` entre "Arquitetura" e "é estratégia."
+   - Adicionar `whitespace-nowrap` no `<h1>` para garantir que não quebre em telas médias/grandes
+   - Reduzir o tamanho responsivo nos breakpoints menores caso necessário (manter `text-3xl sm:text-5xl md:text-6xl lg:text-7xl` — cabe sem quebrar pois "Arquitetura é estratégia." é curto)
 
-Resto da seção (cabeçalho, logo Google, estrelas, conteúdo dos cards, botão "Ver todas") permanece inalterado.
+2. **Espaço maior entre "GOIÂNIA · BRASIL" e o título**
+   - Adicionar `mt-12` (≈48px) ao bloco do título no desktop (`md:mt-12`), preservando o `my-12` mobile já existente
+   - Resultado: respiro generoso entre o pequeno label superior e o título principal, alinhado ao estilo editorial do site
+
+## Resultado visual
+
+```text
+GOIÂNIA · BRASIL
+
+[respiro generoso]
+
+Arquitetura é estratégia.
+```
+
+Título numa linha só, com a mesma formatação tipográfica (display + itálico Lora em "estratégia"), e espaçamento consistente com o restante do layout editorial.
 
