@@ -1,14 +1,12 @@
 import { useState, useEffect } from "react";
-import { Menu, X, MessageCircle } from "lucide-react";
-import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
+import { Menu, X } from "lucide-react";
 import logoEterSite from "@/assets/logo-eter-site.jpeg";
 
 const NAV_LINKS = [
   { label: "Início", href: "#inicio" },
+  { label: "Projetos", href: "#projetos" },
   { label: "Sobre", href: "#sobre" },
-  { label: "Serviços", href: "#servicos" },
   { label: "Método", href: "#metodo" },
-  { label: "Portfólio", href: "#portfolio" },
   { label: "Contato", href: "#contato" },
 ];
 
@@ -16,21 +14,14 @@ const WHATSAPP_URL =
   "https://wa.me/556299542888?text=Quero%20uma%20an%C3%A1lise%20do%20meu%20escrit%C3%B3rio";
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [hidden, setHidden] = useState(false);
-  const [lastY, setLastY] = useState(0);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => {
-      const y = window.scrollY;
-      setScrolled(y > 40);
-      setHidden(y > 300 && y > lastY);
-      setLastY(y);
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
     };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [lastY]);
+  }, [open]);
 
   const scrollTo = (href: string) => {
     setOpen(false);
@@ -40,36 +31,48 @@ export default function Navbar() {
   };
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        hidden ? "-translate-y-full" : "translate-y-0"
-      } ${
-        scrolled
-          ? "bg-background/80 backdrop-blur-xl shadow-sm border-b border-border/50"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 sm:px-10 h-20">
-        {/* Logo */}
+    <>
+      {/* Mobile top bar */}
+      <div className="md:hidden fixed top-0 left-0 right-0 z-40 bg-background/90 backdrop-blur-md border-b border-border h-16 flex items-center justify-between px-6">
         <a href="#inicio" onClick={() => scrollTo("#inicio")} className="flex items-center">
-          <img
-            src={logoEterSite}
-            alt="Éter Arquitetura e Design"
-            className="h-10 w-auto rounded-sm"
-          />
+          <img src={logoEterSite} alt="Éter Arquitetura e Design" className="h-9 w-auto rounded-sm" />
+        </a>
+        <button
+          onClick={() => setOpen(true)}
+          className="p-2 text-foreground"
+          aria-label="Abrir menu"
+        >
+          <Menu className="w-6 h-6" />
+        </button>
+      </div>
+
+      {/* Desktop sidebar */}
+      <aside className="hidden md:flex fixed top-0 left-0 bottom-0 z-40 w-[220px] bg-background border-r border-border flex-col justify-between py-10 px-8">
+        <a href="#inicio" onClick={() => scrollTo("#inicio")} className="flex items-center">
+          <img src={logoEterSite} alt="Éter Arquitetura e Design" className="h-12 w-auto rounded-sm" />
         </a>
 
-        {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-8">
+        <nav className="flex flex-col gap-5">
           {NAV_LINKS.map((l) => (
             <button
               key={l.href}
               onClick={() => scrollTo(l.href)}
-              className="link-underline font-body text-[13px] tracking-wide text-foreground/80 hover:text-foreground transition-colors duration-300"
+              className="font-body text-[11px] tracking-[0.32em] uppercase text-foreground/70 hover:text-accent transition-colors duration-300 text-left"
             >
               {l.label}
             </button>
           ))}
+        </nav>
+
+        <div className="flex flex-col gap-3">
+          <a
+            href="https://www.instagram.com/eter.arqdesign"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-body text-[10px] tracking-[0.32em] uppercase text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Instagram
+          </a>
           <a
             href={WHATSAPP_URL}
             target="_blank"
@@ -77,47 +80,55 @@ export default function Navbar() {
             id="cta-nav-whatsapp"
             data-gtm-event="cta_nav_click"
             data-gtm-label="Nav WhatsApp"
-            className="gtm-cta gtm-cta-nav inline-flex items-center gap-2 bg-foreground text-background font-body text-[13px] font-medium px-5 py-2.5 rounded-full hover:bg-accent transition-colors duration-300"
+            className="gtm-cta gtm-cta-nav font-body text-[10px] tracking-[0.32em] uppercase text-muted-foreground hover:text-foreground transition-colors"
           >
-            <MessageCircle className="w-4 h-4" />
             WhatsApp
           </a>
         </div>
+      </aside>
 
-        {/* Mobile menu */}
-        <div className="md:hidden">
-          <Sheet open={open} onOpenChange={setOpen}>
-            <SheetTrigger asChild>
-              <button className="p-2 text-foreground" aria-label="Menu">
-                <Menu className="w-6 h-6" />
+      {/* Mobile off-canvas */}
+      {open && (
+        <div
+          className="md:hidden fixed inset-0 z-50 bg-background flex flex-col p-8 animate-in fade-in duration-300"
+        >
+          <div className="flex items-center justify-between mb-16">
+            <img src={logoEterSite} alt="Éter Arquitetura e Design" className="h-10 w-auto rounded-sm" />
+            <button onClick={() => setOpen(false)} className="p-2" aria-label="Fechar menu">
+              <X className="w-6 h-6 text-foreground" />
+            </button>
+          </div>
+          <nav className="flex flex-col gap-7">
+            {NAV_LINKS.map((l) => (
+              <button
+                key={l.href}
+                onClick={() => scrollTo(l.href)}
+                className="font-display tracking-display text-2xl text-foreground text-left hover:text-accent transition-colors"
+              >
+                {l.label}
               </button>
-            </SheetTrigger>
-            <SheetContent side="right" className="bg-background pt-16 w-72">
-              <SheetTitle className="sr-only">Menu de navegação</SheetTitle>
-              <div className="flex flex-col gap-6">
-                {NAV_LINKS.map((l) => (
-                  <button
-                    key={l.href}
-                    onClick={() => scrollTo(l.href)}
-                    className="font-display tracking-display text-xl text-foreground text-left hover:text-accent transition-colors"
-                  >
-                    {l.label}
-                  </button>
-                ))}
-                <a
-                  href={WHATSAPP_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="gtm-cta inline-flex items-center gap-2 bg-foreground text-background font-body text-sm font-medium px-6 py-3 rounded-full mt-4 w-fit"
-                >
-                  <MessageCircle className="w-4 h-4" />
-                  Falar no WhatsApp
-                </a>
-              </div>
-            </SheetContent>
-          </Sheet>
+            ))}
+          </nav>
+          <div className="mt-auto flex flex-col gap-3">
+            <a
+              href="https://www.instagram.com/eter.arqdesign"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-body text-[11px] tracking-[0.32em] uppercase text-muted-foreground"
+            >
+              Instagram
+            </a>
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="gtm-cta font-body text-[11px] tracking-[0.32em] uppercase text-muted-foreground"
+            >
+              WhatsApp
+            </a>
+          </div>
         </div>
-      </div>
-    </nav>
+      )}
+    </>
   );
 }
