@@ -1,16 +1,23 @@
 
-# Hero `/`: trocar imagem e aplicar 40% de opacidade (60% transparência)
 
-## O que muda
+# Portfolio `/`: imagens dessaturadas/transparentes que ganham cor no hover
 
-1. **Asset novo**: copiar `user-uploads://IMG_2197_1.jpg` → `src/assets/hero-consultorio.jpg`
-2. **`src/pages/Index.tsx`**:
-   - Trocar import: `heroBg from "@/assets/hero-bg-site.jpg"` → `heroBg from "@/assets/hero-consultorio.jpg"`
-   - Aplicar `opacity-40` na `<img>` da hero (60% de transparência conforme pedido)
+Efeito aplicado **apenas na `/`** (a `/lp` permanece intacta), via prop opcional `dimmed` adicionada ao componente compartilhado `PortfolioGrid`.
 
-```diff
-- <img src={heroBg} ... className="w-full h-full object-cover" />
-+ <img src={heroBg} ... className="w-full h-full object-cover opacity-40" />
-```
+## Mudanças
 
-Nada mais é tocado. `/lp` permanece intacta.
+**1. `src/components/ui/portfolio-grid.tsx`**
+- Adicionar prop opcional `dimmed?: boolean` (default `false`, preservando comportamento atual da `/lp`)
+- Quando `dimmed=true`, aplicar na `<img>`:
+  - Estado padrão: `opacity-60 saturate-50` → imagem apagada/dessaturada
+  - Hover (via `group-hover`): `opacity-100 saturate-100` → cor e nitidez completas
+  - Transição: `transition-all duration-500` para suavidade
+- Zoom no hover (`group-hover:scale-105`) e overlay escuro com título já existentes são mantidos
+
+**2. `src/pages/Index.tsx`**
+- Passar a prop na seção Projects: `<PortfolioGrid items={items} dimmed />`
+
+## Resultado
+
+Igual à referência enviada: grid em estado "calmo" e suavemente apagado por padrão; cada card ganha vida (cor + nitidez + leve zoom) ao passar o mouse, com o título aparecendo sobre o overlay escuro. A `/lp` continua usando o grid em cor cheia.
+
