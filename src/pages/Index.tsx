@@ -74,15 +74,17 @@ function Hero() {
           </h1>
           <p className="mt-8 font-body font-light text-muted-foreground text-base sm:text-lg max-w-lg leading-[1.8]">
             Na Éter Arquitetura e Design, desenvolvemos projetos de arquitetura e
-            design que traduzem a essência de cada marca em espaços sofisticados
-            e funcionais.
+            design que traduzem a <em className="font-detail">essência</em> de
+            cada marca em espaços sofisticados e funcionais.
             <br />
             <br />
-            Cada ambiente é concebido para proporcionar experiências marcantes,
-            fortalecendo a identidade do negócio e favorecendo sua operação de
-            forma fluida e eficiente. Unimos sensibilidade estética, técnica e
-            atenção aos detalhes para criar espaços que conectam e comunicam,
-            aumentando a percepção de valor.
+            Cada ambiente é concebido para proporcionar{" "}
+            <em className="font-detail">experiências</em> marcantes, fortalecendo
+            a identidade do negócio e favorecendo sua operação de forma fluida e
+            eficiente. Unimos sensibilidade estética, técnica e atenção aos{" "}
+            <em className="font-detail">detalhes</em> para criar espaços que
+            conectam e comunicam, aumentando a percepção de{" "}
+            <em className="font-detail">valor</em>.
             <br />
             <br />
             Do conceito à especificação de mobiliário e iluminação, entregamos
