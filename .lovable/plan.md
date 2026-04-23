@@ -1,26 +1,16 @@
 
-# Trocar 3 passos da seção "Método" da `/` pelo modelo da `/lp`
+# Hero `/`: trocar imagem e aplicar 40% de opacidade (60% transparência)
 
-Replico o componente `Process` da `/lp` (com ícones, círculos, número translúcido grande de fundo e linha do tempo) dentro da função `Method()` da `/`, mantendo `id="metodo"` e o fundo `bg-secondary`.
+## O que muda
 
-## Conteúdo dos 3 passos (igual à `/lp`)
+1. **Asset novo**: copiar `user-uploads://IMG_2197_1.jpg` → `src/assets/hero-consultorio.jpg`
+2. **`src/pages/Index.tsx`**:
+   - Trocar import: `heroBg from "@/assets/hero-bg-site.jpg"` → `heroBg from "@/assets/hero-consultorio.jpg"`
+   - Aplicar `opacity-40` na `<img>` da hero (60% de transparência conforme pedido)
 
-1. **01 — Diagnóstico Estratégico** (ícone `Target`)  
-   "Analisamos seu espaço, seu público e as diretrizes centrais do seu negócio."
-2. **02 — Projetamos atmosferas** (ícone `Lightbulb`)  
-   "Transformamos estética em estratégia e experiências que conectam, envolvem e convertem."
-3. **03 — Execução Orientada** (ícone `Ruler`)  
-   "Acompanhamento próximo para garantir que o espaço entregue o que promete."
+```diff
+- <img src={heroBg} ... className="w-full h-full object-cover" />
++ <img src={heroBg} ... className="w-full h-full object-cover opacity-40" />
+```
 
-## Implementação
-
-Único arquivo alterado: `src/pages/Index.tsx`
-
-- **Imports**: adicionar `Target, Lightbulb, Ruler` ao import de `lucide-react`
-- **Função `Method()`**: reescrever apenas o conteúdo:
-  - Header centralizado mantendo eyebrow "Método" + título "Como *projetamos*."
-  - Grid `md:grid-cols-3` com classe `timeline-line` (já usada em `/lp` — linha horizontal sutil entre os círculos)
-  - Cada passo: círculo `w-16 h-16` com borda + ícone, número grande (120px) translúcido como marca-d'água atrás do título, título em `font-display`, descrição centralizada com `max-w-[280px]`
-  - Animação `useReveal` mantida com stagger de 180ms
-
-Sidebar, hero, sobre, projetos, depoimento, contato e footer permanecem intactos. `/lp` não é tocada.
+Nada mais é tocado. `/lp` permanece intacta.
