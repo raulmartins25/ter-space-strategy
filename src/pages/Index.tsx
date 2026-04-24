@@ -483,8 +483,8 @@ function Contact() {
         <p className="font-body text-[10px] tracking-[0.5em] uppercase text-muted-foreground mb-10">
           Contato
         </p>
-        <h2 className="font-display tracking-display text-4xl sm:text-5xl md:text-6xl text-foreground leading-[1.05] mb-16">
-          Vamos projetar seu próximo <em className="font-detail">espaço</em>.
+        <h2 className="font-display tracking-display text-3xl sm:text-4xl md:text-5xl text-foreground leading-[1.05] mb-16">
+          Vamos juntos dar início ao seu projeto, criar espaços para <em className="font-detail">envolver e conectar</em>.
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-6 max-w-3xl">
